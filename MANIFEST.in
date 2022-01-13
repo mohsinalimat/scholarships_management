@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include scholarships_management *.css
+recursive-include scholarships_management *.csv
+recursive-include scholarships_management *.html
+recursive-include scholarships_management *.ico
+recursive-include scholarships_management *.js
+recursive-include scholarships_management *.json
+recursive-include scholarships_management *.md
+recursive-include scholarships_management *.png
+recursive-include scholarships_management *.py
+recursive-include scholarships_management *.svg
+recursive-include scholarships_management *.txt
+recursive-exclude scholarships_management *.pyc
