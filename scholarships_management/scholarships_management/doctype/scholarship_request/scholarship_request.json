@@ -1,0 +1,324 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Scholarship.####",
+ "creation": "2022-01-13 16:01:13.954506",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_data_section",
+  "full_name_en",
+  "birth_date",
+  "martial_status",
+  "nationality",
+  "column_break_6",
+  "full_name_ar",
+  "birthplace",
+  "gender",
+  "personal_image",
+  "address_data_section",
+  "area",
+  "neighborhood_name",
+  "house_number",
+  "column_break_15",
+  "city",
+  "street_name",
+  "floor_number",
+  "social_links_section",
+  "phone_number",
+  "whatsapp_number",
+  "email",
+  "column_break_23",
+  "twitter",
+  "facebook",
+  "passport_data_section",
+  "passport_number",
+  "passport_issue_date",
+  "passport_image",
+  "column_break_30",
+  "passport_issue_place",
+  "passport_expire_date",
+  "scholarship_documents_section",
+  "have_an_order_id",
+  "university_order_id",
+  "secondary_certificate",
+  "biography_report",
+  "criminal_record",
+  "column_break_39",
+  "university",
+  "grade_report",
+  "recommendation",
+  "health_record",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_data_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Data"
+  },
+  {
+   "fieldname": "full_name_en",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name English",
+   "reqd": 1
+  },
+  {
+   "fieldname": "birth_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Birth Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "martial_status",
+   "fieldtype": "Select",
+   "label": "Martial Status",
+   "options": "Single\nMarried"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Nationality",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name_ar",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name Arabic",
+   "reqd": 1
+  },
+  {
+   "fieldname": "birthplace",
+   "fieldtype": "Link",
+   "label": "Birthplace",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale",
+   "reqd": 1
+  },
+  {
+   "fieldname": "personal_image",
+   "fieldtype": "Attach Image",
+   "label": "Personal Image",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_data_section",
+   "fieldtype": "Section Break",
+   "label": "Address Data"
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "label": "Area"
+  },
+  {
+   "fieldname": "neighborhood_name",
+   "fieldtype": "Data",
+   "label": "Neighborhood Name"
+  },
+  {
+   "fieldname": "house_number",
+   "fieldtype": "Data",
+   "label": "House Number"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "street_name",
+   "fieldtype": "Data",
+   "label": "Street Name"
+  },
+  {
+   "fieldname": "floor_number",
+   "fieldtype": "Data",
+   "label": "Floor Number"
+  },
+  {
+   "fieldname": "social_links_section",
+   "fieldtype": "Section Break",
+   "label": "Social Links"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "whatsapp_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp Number  ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "twitter",
+   "fieldtype": "Data",
+   "label": "Twitter"
+  },
+  {
+   "fieldname": "facebook",
+   "fieldtype": "Data",
+   "label": "Facebook"
+  },
+  {
+   "fieldname": "passport_data_section",
+   "fieldtype": "Section Break",
+   "label": "Passport Data"
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Int",
+   "label": "Passport Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "passport_issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "passport_image",
+   "fieldtype": "Attach",
+   "label": "Passport Image (PDF)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_30",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "passport_issue_place",
+   "fieldtype": "Data",
+   "label": "Issue Place",
+   "reqd": 1
+  },
+  {
+   "fieldname": "passport_expire_date",
+   "fieldtype": "Date",
+   "label": "Expire Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "scholarship_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Scholarship Documents"
+  },
+  {
+   "fieldname": "have_an_order_id",
+   "fieldtype": "Select",
+   "label": "Have an Order ID",
+   "options": "Yes\nNo"
+  },
+  {
+   "fieldname": "university_order_id",
+   "fieldtype": "Data",
+   "label": "University Order ID"
+  },
+  {
+   "fieldname": "secondary_certificate",
+   "fieldtype": "Attach",
+   "label": "Secondary Certificate (PDF)"
+  },
+  {
+   "fieldname": "biography_report",
+   "fieldtype": "Attach",
+   "label": "Biography Report (PDF)"
+  },
+  {
+   "fieldname": "criminal_record",
+   "fieldtype": "Attach",
+   "label": "Criminal Record (PDF)"
+  },
+  {
+   "fieldname": "column_break_39",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "university",
+   "fieldtype": "Select",
+   "label": "University ",
+   "options": "test 1\ntest 2\ntest 3"
+  },
+  {
+   "fieldname": "grade_report",
+   "fieldtype": "Attach",
+   "label": "Grade Report (PDF)"
+  },
+  {
+   "fieldname": "recommendation",
+   "fieldtype": "Attach",
+   "label": "Recommendation (PDF)"
+  },
+  {
+   "fieldname": "health_record",
+   "fieldtype": "Attach",
+   "label": "Health Record (PDF)"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Scholarship Request",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-01-13 16:01:13.954506",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Scholarship Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,266 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Scan Form.####",
+ "creation": "2022-01-13 16:14:39.144808",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_data_section",
+  "full_name",
+  "column_break_3",
+  "personal_image",
+  "identity_data_section",
+  "nationality",
+  "gender",
+  "birth_date",
+  "birthplace",
+  "column_break_10",
+  "identity_type",
+  "identity_number",
+  "expire_date",
+  "education_data_section",
+  "education_degree",
+  "specialization",
+  "column_break_17",
+  "work_place",
+  "job_title",
+  "address_data_section",
+  "phone_number",
+  "city",
+  "neighborhood_name",
+  "house_number",
+  "column_break_25",
+  "whatsapp_number",
+  "area",
+  "street_name",
+  "floor_number",
+  "social_links_section",
+  "email",
+  "facebook",
+  "column_break_33",
+  "twitter",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_data_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Data"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "personal_image",
+   "fieldtype": "Attach Image",
+   "label": "Personal Image",
+   "reqd": 1
+  },
+  {
+   "fieldname": "identity_data_section",
+   "fieldtype": "Section Break",
+   "label": "Identity Data"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Nationality ",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Gender",
+   "options": "Male\nFemale",
+   "reqd": 1
+  },
+  {
+   "fieldname": "birth_date",
+   "fieldtype": "Date",
+   "label": "Birth Date ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "birthplace",
+   "fieldtype": "Data",
+   "label": "Birthplace",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "identity_type",
+   "fieldtype": "Select",
+   "label": "Identity Type",
+   "options": "Passport\nNational ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "identity_number",
+   "fieldtype": "Data",
+   "label": "Identity Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expire_date",
+   "fieldtype": "Date",
+   "label": "Expire Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "education_data_section",
+   "fieldtype": "Section Break",
+   "label": "Education Data"
+  },
+  {
+   "fieldname": "education_degree",
+   "fieldtype": "Data",
+   "label": "Education Degree",
+   "reqd": 1
+  },
+  {
+   "fieldname": "specialization",
+   "fieldtype": "Data",
+   "label": "Specialization",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "work_place",
+   "fieldtype": "Data",
+   "label": "Work Place"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "address_data_section",
+   "fieldtype": "Section Break",
+   "label": "Address Data"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "neighborhood_name",
+   "fieldtype": "Data",
+   "label": "Neighborhood Name"
+  },
+  {
+   "fieldname": "house_number",
+   "fieldtype": "Data",
+   "label": "House Number"
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "whatsapp_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Data",
+   "label": "Area"
+  },
+  {
+   "fieldname": "street_name",
+   "fieldtype": "Data",
+   "label": "Street Name"
+  },
+  {
+   "fieldname": "floor_number",
+   "fieldtype": "Data",
+   "label": "Floor Number"
+  },
+  {
+   "fieldname": "social_links_section",
+   "fieldtype": "Section Break",
+   "label": "Social Links"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "facebook",
+   "fieldtype": "Data",
+   "label": "Facebook"
+  },
+  {
+   "fieldname": "column_break_33",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "twitter",
+   "fieldtype": "Data",
+   "label": "Twitter"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Security Scanner Forum",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-01-13 16:16:04.163413",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Security Scanner Forum",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
