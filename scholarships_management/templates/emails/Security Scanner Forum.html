@@ -1,7 +1,63 @@
-<div>
-  <div class="gray-container text-center">
-    <h3>Please, Fill in Your Data Carefully !!</h3>
-    <p> Dear {{ full_name_en }}, use this <a href="https://ao-erpnext.sky.slnee.com/security-scanner-forum?new=1">Security Scanner
-        Forum</a> to complete your data</p>
-  </div>
-</div>
+<html lang="en">
+
+<head>
+  <style>
+    header.masterhead {
+      position: relative;
+      background-color: #343a40;
+      background: url("/files/webimg/bg.jpg") no-repeat center center;
+      background-size: cover;
+      padding-top: 8rem;
+      padding-bottom: 10rem;
+    }
+
+    header.masterhead h2,
+    header.masterhead .h2 {
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/opacity/see-through */
+      color: white;
+      font-weight: bold;
+      border: 3px solid #f1f1f1;
+      position: absolute;
+      /*top: 50%;
+      left: 50%;*/
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      /*width: 80%;*/
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="masterhead">
+    <div class="container position-relative">
+      <div class="row justify-content-center">
+        <div class='text-center'>
+          <h2 class="mb-5">لجنة الدعوة في أفريقيا</h2>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container p-0">
+      <div class="row g-0">
+        <div class="justify-content-center">
+          <h4>Dear <u>{{ full_name_en }}</u>,</h4>
+          <h5>Your Scholarship Request ID: {{ request_ID }} </h5>
+          <p>Please complete your Security Scanner Forum.</p>
+          <div class="row justify-content-center">
+            <a href='https://ao-erpnext.sky.slnee.com/security-scanner-forum?new=1' class='btn btn-primary'>Security Scanner
+              Forum</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

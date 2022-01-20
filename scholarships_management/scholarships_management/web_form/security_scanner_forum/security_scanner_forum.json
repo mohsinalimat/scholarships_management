@@ -10,7 +10,7 @@
  "amount_based_on_field": 0,
  "apply_document_permissions": 0,
  "button_label": "Submit",
- "client_script": "function ValidateEmail(inEmail){\r\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\r\n    try {\r\n    if(inEmail.match(mailformat))\r\n        {\r\n            return true;\r\n        }\r\n    else\r\n        {\r\n            return false;\r\n        }\r\n    } catch (err) {\r\n        return false;\r\n    }\r\n}\r\n\r\nfunction ValidateWhatsNumber(inNumber){\r\n    var countryCodeFormat = /^\\+?\\d+$/;\r\n    try{\r\n    if(inNumber.match(countryCodeFormat)[0])\r\n        {\r\n            return true;\r\n        }\r\n    else\r\n        {\r\n            return false;\r\n        }\r\n    } catch (err){\r\n        return false;\r\n    }\r\n}\r\n\r\nfrappe.web_form.validate = () => {\r\n    if (ValidateEmail(frappe.web_form.get_value('email')) && ValidateWhatsNumber(frappe.web_form.get_value('whatsapp_number'))){\r\n        return true ;\r\n    } else {\r\n        return false ;\r\n    }\r\n}\r\n\r\n",
+ "client_script": "function ValidateEmail(inEmail){\r\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\r\n    try {\r\n    if(inEmail.match(mailformat))\r\n        {\r\n            return true;\r\n        }\r\n    else\r\n        {\r\n            return false;\r\n        }\r\n    } catch (err) {\r\n        return false;\r\n    }\r\n}\r\n\r\nfunction ValidateWhatsNumber(inNumber){\r\n    var countryCodeFormat = /^\\+?\\d+$/;\r\n    try{\r\n    if(inNumber.match(countryCodeFormat)[0])\r\n        {\r\n            return true;\r\n        }\r\n    else\r\n        {\r\n            return false;\r\n        }\r\n    } catch (err){\r\n        return false;\r\n    }\r\n}\r\n\r\nfrappe.web_form.validate = () => {\r\n    if (ValidateEmail(frappe.web_form.get_value('email')) && ValidateWhatsNumber(frappe.web_form.get_value('whatsapp_number'))){\r\n        return true ;\r\n    } else {\r\n        return false ;\r\n    }\r\n}\r\n\r\nfrappe.web_form.after_save= () => {\r\n   window.location = frappe.web_form.success_url\r\n}\r\n\r\n",
  "creation": "2022-01-13 16:29:06.691474",
  "currency": "SAR",
  "doc_type": "Security Scanner Forum",
@@ -21,7 +21,7 @@
  "is_standard": 1,
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2022-01-14 06:15:09.669895",
+ "modified": "2022-01-20 16:49:22.367552",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "security-scanner-forum",
@@ -34,8 +34,8 @@
  "show_in_grid": 0,
  "show_sidebar": 0,
  "sidebar_items": [],
- "success_message": "Data Submitted Successfully !!",
- "success_url": "https://ao-erpnext.sky.slnee.com/",
+ "success_message": "",
+ "success_url": "https://ao-erpnext.sky.slnee.com",
  "title": "Security Scanner Forum",
  "web_form_fields": [
   {
@@ -339,6 +339,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "description": "Make sure to include country code e.g.(+20)",
    "fieldname": "whatsapp_number",
    "fieldtype": "Data",
    "hidden": 0,
@@ -399,6 +400,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "description": "Make sure to write your correct email address",
    "fieldname": "email",
    "fieldtype": "Data",
    "hidden": 0,

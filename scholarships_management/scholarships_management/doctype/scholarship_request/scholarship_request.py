@@ -8,8 +8,10 @@ from frappe.model.document import Document
 class ScholarshipRequest(Document):
     def on_submit(self):
         # sender = 'muhammadnassef34@gmail.com'
+        #frappe.throw(f'doc name {self.name}, {self.full_name_en}')
         frappe.sendmail(recipients=[self.email], subject='Security Scanner Forum',
-                        template='Security Scanner Forum', args=dict(full_name_en=self.full_name_en, ))
+                        template='Security Scanner Forum', 
+                        args=dict(full_name_en = self.full_name_en, request_ID = self.name))
 
     def on_trash(self):
         name = frappe.db.get_value('Security Scanner Forum', {
