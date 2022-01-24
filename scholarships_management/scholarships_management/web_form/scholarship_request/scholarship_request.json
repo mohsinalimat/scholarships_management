@@ -21,7 +21,7 @@
  "is_standard": 1,
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2022-01-20 16:24:38.024359",
+ "modified": "2022-01-23 17:48:00.801241",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "scholarship-request",
@@ -533,12 +533,12 @@
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "university",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "hidden": 0,
    "label": "University ",
    "max_length": 0,
    "max_value": 0,
-   "options": "test 1\ntest 2\ntest 3",
+   "options": "Universities",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0

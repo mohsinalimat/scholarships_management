@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:university_name",
+ "creation": "2022-01-23 17:34:08.890973",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "university_name",
+  "university_logo",
+  "column_break_3",
+  "university_location"
+ ],
+ "fields": [
+  {
+   "fieldname": "university_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "University Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "university_logo",
+   "fieldtype": "Attach Image",
+   "label": "University Logo"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "university_location",
+   "fieldtype": "Data",
+   "label": "University Location"
+  }
+ ],
+ "image_field": "university_logo",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-01-24 14:52:54.903902",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Universities",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_order": "DESC",
+ "title_field": "university_name"
+}
