@@ -10,7 +10,7 @@ from datetime import date
 class ScholarshipRequest(Document):
     def autoname(self):
         country_code = frappe.db.get_value('Country', self.birthplace, 'code')
-        prefix = f'{country_code}-{date.today().year}-'
+        prefix = f'{country_code or "code"}-{date.today().year}-'
         self.name = prefix + getseries(prefix, 4)
 
     """def on_submit(self):

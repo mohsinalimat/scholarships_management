@@ -1,0 +1,314 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:school_name",
+ "creation": "2022-01-26 17:04:42.895986",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "school_data_section",
+  "school_name",
+  "school_language1",
+  "column_break_4",
+  "school_country",
+  "school_language2",
+  "num_of_students",
+  "preparatory_first",
+  "secondary_first",
+  "column_break_9",
+  "preparatory_second",
+  "secondary_second",
+  "column_break_11",
+  "preparatory_third",
+  "secondary_third",
+  "num_of_classrooms",
+  "classroom_preparatory_first",
+  "classroom_secondary_first",
+  "column_break_19",
+  "classroom_preparatory_second",
+  "classroom_secondary_second",
+  "column_break_22",
+  "classroom_preparatory_third",
+  "classroom_secondary_third",
+  "school_images_section",
+  "school_image_1",
+  "column_break_27",
+  "school_image_2",
+  "column_break_29",
+  "school_image_3",
+  "school_manager_data_section",
+  "manager_name",
+  "column_break_33",
+  "manager_phone",
+  "column_break_35",
+  "manager_email",
+  "school_vice_manager_section",
+  "vice_name",
+  "column_break_39",
+  "vice_phone",
+  "column_break_41",
+  "vice_email",
+  "route",
+  "published"
+ ],
+ "fields": [
+  {
+   "fieldname": "school_data_section",
+   "fieldtype": "Section Break",
+   "label": "School Data"
+  },
+  {
+   "fieldname": "school_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "School Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "school_language1",
+   "fieldtype": "Link",
+   "label": "School Language 1",
+   "options": "Language"
+  },
+  {
+   "fieldname": "school_language2",
+   "fieldtype": "Link",
+   "label": "School Language 2",
+   "options": "Language"
+  },
+  {
+   "fieldname": "school_country",
+   "fieldtype": "Link",
+   "label": "School Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "num_of_students",
+   "fieldtype": "Section Break",
+   "label": "Number Of Students"
+  },
+  {
+   "fieldname": "num_of_classrooms",
+   "fieldtype": "Section Break",
+   "label": "Number Of Classrooms"
+  },
+  {
+   "fieldname": "school_manager_data_section",
+   "fieldtype": "Section Break",
+   "label": "School Manager Data"
+  },
+  {
+   "fieldname": "manager_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "School Manager Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "manager_phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "School Manager Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "manager_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "School Manager Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "school_vice_manager_section",
+   "fieldtype": "Section Break",
+   "label": "School Vice Manager"
+  },
+  {
+   "fieldname": "vice_name",
+   "fieldtype": "Data",
+   "label": "Vice Manager Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vice_phone",
+   "fieldtype": "Data",
+   "label": "Vice Manager Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vice_email",
+   "fieldtype": "Data",
+   "label": "Vice Manager Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "school_image_1",
+   "fieldtype": "Attach Image",
+   "label": "School Image 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "school_image_2",
+   "fieldtype": "Attach Image",
+   "label": "School Image 2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "school_image_3",
+   "fieldtype": "Attach Image",
+   "label": "School Image 3",
+   "reqd": 1
+  },
+  {
+   "fieldname": "preparatory_first",
+   "fieldtype": "Int",
+   "label": "Preparatory First"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preparatory_second",
+   "fieldtype": "Int",
+   "label": "Preparatory Second"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preparatory_third",
+   "fieldtype": "Int",
+   "label": "Preparatory Third"
+  },
+  {
+   "fieldname": "secondary_first",
+   "fieldtype": "Int",
+   "label": "Secondary First"
+  },
+  {
+   "fieldname": "secondary_second",
+   "fieldtype": "Int",
+   "label": "Secondary Second"
+  },
+  {
+   "fieldname": "secondary_third",
+   "fieldtype": "Int",
+   "label": "Secondary Third"
+  },
+  {
+   "fieldname": "classroom_preparatory_first",
+   "fieldtype": "Int",
+   "label": "Classroom Preparatory First"
+  },
+  {
+   "fieldname": "classroom_preparatory_second",
+   "fieldtype": "Int",
+   "label": "Classroom Preparatory Second"
+  },
+  {
+   "fieldname": "classroom_preparatory_third",
+   "fieldtype": "Int",
+   "label": "Classroom Preparatory Third"
+  },
+  {
+   "fieldname": "classroom_secondary_first",
+   "fieldtype": "Int",
+   "label": "Classroom Secondary First"
+  },
+  {
+   "fieldname": "classroom_secondary_second",
+   "fieldtype": "Int",
+   "label": "Classroom Secondary Second"
+  },
+  {
+   "fieldname": "classroom_secondary_third",
+   "fieldtype": "Int",
+   "label": "Classroom Secondary Third"
+  },
+  {
+   "fieldname": "school_images_section",
+   "fieldtype": "Section Break",
+   "label": "School Images"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_33",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_35",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_39",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_41",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published"
+  }
+ ],
+ "has_web_view": 1,
+ "image_field": "school_image_1",
+ "index_web_pages_for_search": 1,
+ "is_published_field": "published",
+ "links": [],
+ "modified": "2022-02-01 11:39:30.684448",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "School Registration",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "school-data",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
