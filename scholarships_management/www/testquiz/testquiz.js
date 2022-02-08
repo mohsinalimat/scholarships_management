@@ -1,5 +1,4 @@
 // Personal Information Section..
-
 function StartQuiz() {
     let form = document.querySelector('#user-data-form');
     if (!form.checkValidity()) {
@@ -24,8 +23,6 @@ frappe.call({
     callback: function (r) {
         if (r.message) {
             Object.entries(r.message).forEach(function (value) {
-
-
                 let questionHeader = document.createElement("h1");
                 questionHeader.innerHTML = value[0];
                 quizContent.appendChild(questionHeader);
@@ -49,7 +46,7 @@ frappe.call({
                     quizContent.appendChild(document.createElement("br"));
                 }
             });
-            // create submit quiz button
+            // create submit quiz button..
             let submitBtn = document.createElement("input");
             submitBtn.type = "submit";
             submitBtn.value = "Submit Quiz";
@@ -57,4 +54,27 @@ frappe.call({
             quizContent.appendChild(submitBtn);
         }
     }
-})
+});
+
+// handle submitted quiz options..
+quizContent.addEventListener('submit', (event) => {
+    let selectedOptions = [];
+    let outstr = $('#quiz-content').serializeArray();
+    outstr.forEach((value) => {
+        selectedOptions.push(value['value']);
+    });
+    console.log(selectedOptions);
+    frappe.call({
+        method: "scholarships_management.www.testquiz.testquiz.get_selected_options",
+        args: {
+            selected_options: selectedOptions
+        },
+        callback: function (r) {
+            if (r.message) {
+                console.log(r.message);
+            }
+        }
+    });
+    //window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz?new=1');
+    event.preventDefault();
+});

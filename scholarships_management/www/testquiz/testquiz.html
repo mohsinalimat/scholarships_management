@@ -1,64 +1,25 @@
-<!-- Personal Information Section-->
-<div class="site-section bg-light" id="personal-data-section">
+<!-- Quiz Section-->
+<div class="site-section bg-light" id="quiz-section">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center mb-5">
                 <div class="block-heading-1">
-                    <h2>Personal Informations</h2>
-                    <span>Fill Your Data Carefully</span>
+                    <h2>Culture Quiz</h2>
+                    <span>Choose Your Answers Carefully</span>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6 mb-5">
-                <form id="user-data-form">
-                    <div class="form-group row">
-                        <div class="col-md-6 mb-4 mb-lg-0">
-                            <input id="first_name" type="text" class="form-control" placeholder="First name" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input id="last_name" type="text" class="form-control" placeholder="Last name" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <input id="phone_number" type="tel" class="form-control"
-                                placeholder="Phone number.e.g +20111111" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <input id="email_address" type="email" class="form-control" placeholder="Email address"
-                                required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-6 ml-auto">
-                            <input id="start_quiz_btn" type="button" onclick="StartQuiz()"
-                                class="btn btn-block btn-primary text-white py-3 px-5" value="Start Quiz">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-4 ml-auto">
-                <h3 class="text-black">Quiz Conditions</h3>
-                <p>
-                <ul>
-                    <li>Only One Attempt Available</li>
-                    <li>To Pass You Must Get 75.0 or Higher</li>
-                </ul>
-                </p>
-            </div>
+        <div class="col-lg-4 ml-auto">
+            <h3 class="text-black">Quiz Conditions</h3>
+            <p>
+            <ul>
+                <li>Only One Attempt Available</li>
+                <li>To Pass You Must Get 75.0 or Higher</li>
+            </ul>
+            </p>
         </div>
-    </div>
-</div>
-<!-- Quiz Section-->
-<div class="site-section bg-light" id="quiz-section">
-    <div class="container-fluid">
-        <form id="quiz-content">
-
+        <hr/>
+        <form id="quiz-content" method="post">
         </form>
     </div>
 </div>

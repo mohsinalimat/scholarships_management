@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:full_name",
+ "creation": "2022-02-08 16:42:53.891125",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_data_section",
+  "full_name",
+  "phone_number",
+  "email_address",
+  "quiz_data_section",
+  "quiz_score",
+  "quiz_status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quiz_score",
+   "fieldtype": "Float",
+   "label": "Quiz Score"
+  },
+  {
+   "fieldname": "quiz_status",
+   "fieldtype": "Data",
+   "label": "Quiz Status"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Culturequiz",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "personal_data_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Data"
+  },
+  {
+   "fieldname": "quiz_data_section",
+   "fieldtype": "Section Break",
+   "label": "Quiz Data"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-02-08 16:45:28.343062",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Culturequiz",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
