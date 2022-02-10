@@ -1,8 +1,8 @@
 import frappe
+import json
+import six
 
 # question_option section..
-
-
 def get_question_names():
     question_names = frappe.db.get_list(
         'Question', pluck='name', order_by='creation')
@@ -45,13 +45,24 @@ def get_correct_options():
 
 
 @frappe.whitelist(allow_guest=True)
-def get_selected_options(selected_options):
-    return type(selected_options)
+def get_quiz_score(selected_options):
+    if isinstance(selected_options, six.string_types):
+        selected_option_lst = json.loads(selected_options)
+    global quiz_score
+    quiz_score = calculate_score(selected_option_lst)[0]
+    global quiz_status
+    quiz_status = calculate_score(selected_option_lst)[1]
+    return [quiz_score, quiz_status]
 
 
-def calculate_score():
+def calculate_score(selected_option_lst):
     correct_options = get_correct_options()
-    selected_options = get_selected_options()
-    frappe.msgprint(
-        f'DB: {len(correct_options)}, USR: {len(selected_options)}')
-    pass
+    count = 0
+    for itm in selected_option_lst:
+        if itm in correct_options:
+            count += 1
+    total_score = float((count / len(correct_options)) * 100)
+    if total_score >= 75:
+        return ["%.3f" % total_score, 'pass']  # f'{total_score:.3f} : pass'
+    else:
+        return ["%.3f" % total_score, 'fail']  # f'{total_score:.3f} : fail'

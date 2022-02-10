@@ -10,7 +10,7 @@
  "amount_based_on_field": 0,
  "apply_document_permissions": 0,
  "button_label": "Submit",
- "client_script": "function ValidateEmail(inEmail){\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\n    try {\n    if(inEmail.match(mailformat))\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err) {\n        return false;\n    }\n}\n\nfunction ValidatePhoneNumber(inNumber){\n    var countryCodeFormat = /^\\+?\\d+$/;\n    try{\n    if(inNumber.match(countryCodeFormat)[0])\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err){\n        return false;\n    }\n}\n\nfrappe.web_form.validate = () => {\n    if (ValidateEmail(frappe.web_form.get_value('email_address')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('phone_number'))){\n        return true ;\n    } else {\n        return false ;\n    }\n}\n\nfrappe.web_form.after_save= () => {\n   window.location = frappe.web_form.success_url\n}",
+ "client_script": "var urlParams = new URLSearchParams(window.location.search);\n\nvar quizScoreCoded = urlParams.get('quiz_score');\n\nvar quizStatusCoded = urlParams.get('quiz_status');\n\nconst quizSc = atob(quizScoreCoded);\nconst quizSt = atob(quizStatusCoded);\n\nfrappe.web_form.on('quiz_score', (field, value) => {\n    field.set_value(quizSc);\n});\n\nfrappe.web_form.on('quiz_status', (field, value) => {\n    field.set_value(quizSt);\n});\n\nfunction ValidateEmail(inEmail){\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\n    try {\n    if(inEmail.match(mailformat))\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err) {\n        return false;\n    }\n}\n\nfunction ValidatePhoneNumber(inNumber){\n    var countryCodeFormat = /^\\+?\\d+$/;\n    try{\n    if(inNumber.match(countryCodeFormat)[0])\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err){\n        return false;\n    }\n}\n\nfrappe.web_form.validate = () => {\n    if (ValidateEmail(frappe.web_form.get_value('email_address')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('phone_number'))){\n        return true ;\n    } else {\n        return false ;\n    }\n}\n\nfrappe.web_form.after_save= () => {\n   window.location = frappe.web_form.success_url\n}\n",
  "creation": "2022-02-08 16:52:35.945003",
  "currency": "SAR",
  "doc_type": "Culturequiz",
@@ -21,7 +21,7 @@
  "is_standard": 1,
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2022-02-08 17:02:01.074930",
+ "modified": "2022-02-10 11:30:33.005799",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "culturequiz",
@@ -139,6 +139,30 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "quiz_score",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Quiz Score",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 1,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "quiz_status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Quiz Status",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 1,
    "reqd": 0,
    "show_in_filter": 0
   }

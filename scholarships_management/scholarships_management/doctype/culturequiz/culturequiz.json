@@ -41,13 +41,15 @@
   },
   {
    "fieldname": "quiz_score",
-   "fieldtype": "Float",
-   "label": "Quiz Score"
+   "fieldtype": "Data",
+   "label": "Quiz Score",
+   "read_only": 1
   },
   {
    "fieldname": "quiz_status",
    "fieldtype": "Data",
-   "label": "Quiz Status"
+   "label": "Quiz Status",
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -72,7 +74,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-08 16:45:28.343062",
+ "modified": "2022-02-10 11:28:24.097156",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Culturequiz",

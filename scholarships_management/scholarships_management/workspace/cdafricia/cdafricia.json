@@ -74,9 +74,35 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quiz",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quiz Question",
+   "link_to": "Question",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quiz Submissions",
+   "link_to": "Culturequiz",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-01-30 15:57:38.238565",
+ "modified": "2022-02-10 13:37:51.455738",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "CDAFRICIA",

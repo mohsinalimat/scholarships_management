@@ -1,5 +1,5 @@
 // Personal Information Section..
-function StartQuiz() {
+/*function StartQuiz() {
     let form = document.querySelector('#user-data-form');
     if (!form.checkValidity()) {
         form.reportValidity();
@@ -15,11 +15,11 @@ function get_form_data() {
     inputs.forEach((id) => userData[id] = document.getElementById(`${id}`).value);
     return userData
 }
-
+*/
 // Quiz Section..
 var quizContent = document.getElementById('quiz-content');
 frappe.call({
-    method: "scholarships_management.www.testquiz.testquiz.get_question_option",
+    method: "scholarships_management.www.culturequiz.culturequiz.get_question_option",
     callback: function (r) {
         if (r.message) {
             Object.entries(r.message).forEach(function (value) {
@@ -63,18 +63,19 @@ quizContent.addEventListener('submit', (event) => {
     outstr.forEach((value) => {
         selectedOptions.push(value['value']);
     });
-    console.log(selectedOptions);
+    //console.log(selectedOptions);
     frappe.call({
-        method: "scholarships_management.www.testquiz.testquiz.get_selected_options",
+        method: "scholarships_management.www.culturequiz.culturequiz.get_quiz_score",
         args: {
             selected_options: selectedOptions
         },
         callback: function (r) {
             if (r.message) {
-                console.log(r.message);
+                var quizScore = r.message[0];
+                var quizStatus = r.message[1];
+                window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz?new=1&quiz_score=' + btoa(quizScore) + '&quiz_status=' + btoa(quizStatus))
             }
         }
     });
-    //window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz?new=1');
     event.preventDefault();
 });
