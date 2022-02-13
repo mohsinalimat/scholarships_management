@@ -10,9 +10,10 @@
   "school_data_section",
   "school_name",
   "school_language1",
+  "school_language2",
   "column_break_4",
   "school_country",
-  "school_language2",
+  "school_city",
   "num_of_students",
   "preparatory_first",
   "secondary_first",
@@ -282,6 +283,12 @@
    "fieldname": "published",
    "fieldtype": "Check",
    "label": "Published"
+  },
+  {
+   "fieldname": "school_city",
+   "fieldtype": "Link",
+   "label": "School City",
+   "options": "City"
   }
  ],
  "has_web_view": 1,
@@ -289,7 +296,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-02-01 11:39:30.684448",
+ "modified": "2022-02-10 18:37:01.793360",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "School Registration",

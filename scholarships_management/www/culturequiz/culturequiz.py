@@ -3,6 +3,8 @@ import json
 import six
 
 # question_option section..
+
+
 def get_question_names():
     question_names = frappe.db.get_list(
         'Question', pluck='name', order_by='creation')
@@ -33,6 +35,23 @@ def get_question_option():
 
     return question_option_dict
 
+
+@frappe.whitelist(allow_guest=True)
+def get_translated_question(system_lang, question_text):
+    translated_question = frappe.db.get_value('Translation',
+                                              {'source_text': question_text[36:-10],
+                                               'language': system_lang},
+                                              'translated_text')
+    return translated_question
+
+
+@frappe.whitelist(allow_guest=True)
+def get_translated_option(system_lang, option_text):
+    translated_option = frappe.db.get_value('Translation',
+                                              {'source_text': option_text,
+                                               'language': system_lang},
+                                              'translated_text')
+    return translated_option
 
 # quiz_logic section..
 def get_correct_options():

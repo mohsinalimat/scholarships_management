@@ -100,9 +100,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\u062a\u0631\u062c\u0645\u0629",
+   "link_to": "Translation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-02-10 13:37:51.455738",
+ "modified": "2022-02-13 10:50:50.114658",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "CDAFRICIA",

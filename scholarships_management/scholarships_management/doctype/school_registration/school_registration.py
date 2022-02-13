@@ -11,6 +11,7 @@ class SchoolRegistration(WebsiteGenerator):
             'doctype': 'Non_accredited Schools',
             'school_name': self.school_name,
 			'school_country': self.school_country,
+            'school_city': self.school_city,
 			'registered_by': self.owner,
             'school_data_url': 'https://ao-erpnext.sky.slnee.com/' + self.route
         })

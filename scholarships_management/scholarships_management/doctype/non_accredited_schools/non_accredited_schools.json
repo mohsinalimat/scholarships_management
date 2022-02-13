@@ -9,6 +9,7 @@
  "field_order": [
   "school_name",
   "school_country",
+  "school_city",
   "registered_by",
   "school_data",
   "approve__registration",
@@ -52,11 +53,16 @@
    "hidden": 1,
    "label": "School Data URL",
    "read_only": 1
+  },
+  {
+   "fieldname": "school_city",
+   "fieldtype": "Data",
+   "label": "School City"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-01 11:43:09.474090",
+ "modified": "2022-02-10 18:28:30.766619",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Non_accredited Schools",
