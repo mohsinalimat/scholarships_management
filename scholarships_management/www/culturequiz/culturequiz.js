@@ -8,16 +8,16 @@ frappe.call({
         if (r.message) {
             Object.entries(r.message).forEach(function (value) {
                 let questionHeader = document.createElement("h1");
-
+                //frappe.msgprint(frappe.preferred_language);
                 frappe.call({
                     method: "scholarships_management.www.culturequiz.culturequiz.get_translated_question",
                     args: {
-                        system_lang: frappe.preferred_language,
+                        system_langg: frappe.preferred_language,
                         question_text: value[0]
                     },
                     callback: function (rr) {
                         if (rr.message) {
-                            questionHeader.innerHTML = rr.message; //value[0]
+                            questionHeader.innerHTML = rr.message;
                             quizContent.appendChild(questionHeader);
                             setAnswers(value[1]);
                         } else {
@@ -57,7 +57,7 @@ function setAnswers(values) {
         frappe.call({
             method: "scholarships_management.www.culturequiz.culturequiz.get_translated_option",
             args: {
-                system_lang: frappe.preferred_language,
+                system_lan: frappe.preferred_language,
                 option_text: values[optn]
             },
             callback: function (rrr) {

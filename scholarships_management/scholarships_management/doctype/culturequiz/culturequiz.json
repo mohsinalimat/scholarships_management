@@ -37,7 +37,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Email Address",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "quiz_score",
@@ -73,7 +74,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-10 17:16:55.300946",
+ "modified": "2022-02-13 21:46:51.467781",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Culturequiz",

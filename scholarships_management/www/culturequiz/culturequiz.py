@@ -3,11 +3,9 @@ import json
 import six
 
 # question_option section..
-
-
 def get_question_names():
     question_names = frappe.db.get_list(
-        'Question', pluck='name', order_by='creation')
+        'Question', filters={'is_active': 1}, pluck='name', order_by='creation')
     return question_names
 
 
@@ -37,30 +35,35 @@ def get_question_option():
 
 
 @frappe.whitelist(allow_guest=True)
-def get_translated_question(system_lang, question_text):
+def get_translated_question(system_langg, question_text):
     translated_question = frappe.db.get_value('Translation',
                                               {'source_text': question_text[36:-10],
-                                               'language': system_lang},
+                                               'language': system_langg},
                                               'translated_text')
     return translated_question
 
 
 @frappe.whitelist(allow_guest=True)
-def get_translated_option(system_lang, option_text):
+def get_translated_option(system_lan, option_text):
     translated_option = frappe.db.get_value('Translation',
                                               {'source_text': option_text,
-                                               'language': system_lang},
+                                               'language': system_lan},
                                               'translated_text')
     return translated_option
 
 # quiz_logic section..
 def get_correct_options():
-    correct_options = frappe.db.get_list('Options',
-                                         filters={
-                                             'is_correct': 1
-                                         },
-                                         fields='option', pluck='option')
-    return correct_options
+    all_correct_options = []
+    question_names = get_question_names()
+    for quest_name in question_names:
+        correct_options = frappe.db.get_list('Options',
+                                            filters={
+                                                'parent': quest_name,
+                                                'is_correct': 1
+                                            },
+                                            fields='option', pluck='option')
+        all_correct_options += correct_options
+    return all_correct_options
 
 
 @frappe.whitelist(allow_guest=True)
