@@ -1,18 +1,32 @@
 // Quiz Section..
+var urlParams = new URLSearchParams(window.location.search);
+
+var competitionName = urlParams.get('competition_name');
+//console.log(competitionName);
+
+var passingScore = urlParams.get('passing_score');
+//console.log(passingScore);
+
+var quizBanner = urlParams.get('quiz_banner');
+//console.log(quizBanner);
+document.getElementById('qz-b').src = quizBanner;
 
 var quizContent = document.getElementById('quiz-content');
 
 frappe.call({
     method: "scholarships_management.www.culturequiz.culturequiz.get_question_option",
+    args: {
+        competition_title: competitionName
+    },
+    async: false,
     callback: function (r) {
         if (r.message) {
             Object.entries(r.message).forEach(function (value) {
                 let questionHeader = document.createElement("h1");
-                //frappe.msgprint(frappe.preferred_language);
                 frappe.call({
                     method: "scholarships_management.www.culturequiz.culturequiz.get_translated_question",
                     args: {
-                        system_langg: frappe.preferred_language,
+                        system_lang: frappe.preferred_language,
                         question_text: value[0]
                     },
                     callback: function (rr) {
@@ -28,7 +42,7 @@ frappe.call({
                     }
                 });
             });
-            
+
         }
         // create submit quiz button..
         /*let submitBtn = document.createElement("input");
@@ -37,7 +51,7 @@ frappe.call({
         submitBtn.className = "col-md-3 ml-auto btn btn-block btn-primary text-white py-3 px-5";
         quizContent.appendChild(submitBtn);*/
     }
-    
+
 });
 
 
@@ -53,11 +67,11 @@ function setAnswers(values) {
         quizContent.appendChild(radioBtn);
         // create label for radio button..
         let option = document.createElement("label");
-        
+
         frappe.call({
             method: "scholarships_management.www.culturequiz.culturequiz.get_translated_option",
             args: {
-                system_lan: frappe.preferred_language,
+                system_lang: frappe.preferred_language,
                 option_text: values[optn]
             },
             callback: function (rrr) {
@@ -89,13 +103,15 @@ quizContent.addEventListener('submit', (event) => {
     frappe.call({
         method: "scholarships_management.www.culturequiz.culturequiz.get_quiz_score",
         args: {
-            selected_options: selectedOptions
+            selected_options: selectedOptions,
+            competition_title: competitionName,
+            passing_score: passingScore
         },
         callback: function (r) {
             if (r.message) {
                 var quizScore = r.message[0];
                 var quizStatus = r.message[1];
-                window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz?new=1&quiz_score=' + btoa(quizScore) + '&quiz_status=' + btoa(quizStatus))
+                window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz?new=1&quiz_score=' + btoa(quizScore) + '&quiz_status=' + btoa(quizStatus) + '&competition=' + competitionName)
             }
         }
     });

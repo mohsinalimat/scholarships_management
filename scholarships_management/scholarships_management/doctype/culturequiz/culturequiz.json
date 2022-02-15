@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "field:full_name",
  "creation": "2022-02-08 16:42:53.891125",
@@ -9,12 +10,26 @@
  "field_order": [
   "personal_data_section",
   "full_name",
+  "gender",
   "phone_number",
   "email_address",
   "quiz_data_section",
   "quiz_score",
   "quiz_status",
-  "amended_from"
+  "user_session_data_section",
+  "ipaddress",
+  "continentname",
+  "continentcode",
+  "countrycode",
+  "countryname",
+  "stateprov",
+  "city",
+  "section_break_17",
+  "competition",
+  "competition_title",
+  "amended_from",
+  "route",
+  "published"
  ],
  "fields": [
   {
@@ -70,11 +85,99 @@
    "fieldname": "quiz_data_section",
    "fieldtype": "Section Break",
    "label": "Quiz Data"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user_session_data_section",
+   "fieldtype": "Section Break",
+   "label": "User Session Data"
+  },
+  {
+   "fieldname": "ipaddress",
+   "fieldtype": "Data",
+   "label": "ipAddress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "continentcode",
+   "fieldtype": "Data",
+   "label": "continentCode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "continentname",
+   "fieldtype": "Data",
+   "label": "continentName",
+   "read_only": 1
+  },
+  {
+   "fieldname": "countrycode",
+   "fieldtype": "Data",
+   "label": "countryCode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "countryname",
+   "fieldtype": "Data",
+   "label": "countryName",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stateprov",
+   "fieldtype": "Data",
+   "label": "stateProv",
+   "read_only": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "city",
+   "read_only": 1
+  },
+  {
+   "fieldname": "competition",
+   "fieldtype": "Link",
+   "label": "Competition",
+   "options": "Competition"
+  },
+  {
+   "fieldname": "section_break_17",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "competition.competition_title",
+   "fieldname": "competition_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Competition Title"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Route",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Published"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "published",
  "links": [],
- "modified": "2022-02-13 21:46:51.467781",
+ "modified": "2022-02-15 15:37:20.245322",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Culturequiz",
@@ -93,6 +196,7 @@
    "write": 1
   }
  ],
+ "route": "culturequiz-data",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

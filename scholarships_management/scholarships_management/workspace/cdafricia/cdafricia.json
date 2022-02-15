@@ -86,6 +86,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Competition",
+   "link_to": "Competition",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Quiz Question",
    "link_to": "Question",
    "link_type": "DocType",
@@ -111,7 +120,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-02-13 10:50:50.114658",
+ "modified": "2022-02-14 12:21:11.468970",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "CDAFRICIA",

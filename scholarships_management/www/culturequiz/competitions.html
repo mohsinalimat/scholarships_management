@@ -1,0 +1,29 @@
+{% set competitions_data = frappe.get_list('Competition', fields=['competition_image', 'competition_title',
+'competition_description', 'passing_score', 'name', 'quiz_banner'], order_by='creation') %}
+
+{% for competition in competitions_data %}
+<div class="card" style="text-align: center;">
+
+    <img src='{{competition["competition_image"] or "/files/dawah-33.png"}}' alt="Card image" width="200px">
+
+    <div class="card-body">
+        {% set competition_name = competition['name'] %}
+        <p class="c-t" hidden>{{ competition_name }}</p>
+
+        {% set quiz_banner = competition['quiz_banner'] %}
+        <p class="q-b" hidden>{{ quiz_banner }}</p>
+
+        {% set competition_title = competition['competition_title'] %}
+        <h4 style="text-align: center;" class="card-title">{{ _(competition_title) }}</h4>
+
+        {% set competition_description = competition['competition_description'] %}
+        <p style="text-align: center;" class="card-text">{{ _(competition_description) }}</p>
+
+        {% set passing_score = competition['passing_score'] %}
+        <p class="p-s" hidden>{{ passing_score }}</p>
+        <button class="btn btn-primary" type="submit">{{_('Start Quiz')}}</button>
+    </div>
+</div>
+{% endfor %}
+
+<script src="culturequiz/competitions.js"></script>

@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-14 12:10:15.233615",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "competition_title",
+  "passing_score",
+  "column_break_4",
+  "competition_image",
+  "quiz_banner",
+  "section_break_6",
+  "competition_description",
+  "section_break_8",
+  "start_date",
+  "column_break_10",
+  "end_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "competition_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Competition Title",
+   "reqd": 1,
+   "translatable": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "passing_score",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Passing Score",
+   "reqd": 1
+  },
+  {
+   "fieldname": "competition_description",
+   "fieldtype": "Text Editor",
+   "label": "Competition Description",
+   "translatable": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "competition_image",
+   "fieldtype": "Attach Image",
+   "label": "Competition Icon"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quiz_banner",
+   "fieldtype": "Attach Image",
+   "label": "Quiz Banner"
+  }
+ ],
+ "image_field": "competition_image",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-15 11:42:09.708018",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Competition",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "competition_title"
+}

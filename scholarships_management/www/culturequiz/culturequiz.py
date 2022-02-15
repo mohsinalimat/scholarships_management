@@ -3,9 +3,9 @@ import json
 import six
 
 # question_option section..
-def get_question_names():
+def get_question_names(competition_title):
     question_names = frappe.db.get_list(
-        'Question', filters={'is_active': 1}, pluck='name', order_by='creation')
+        'Question', filters={'is_active': 1, 'competition':competition_title}, pluck='name', order_by='creation')
     return question_names
 
 
@@ -23,10 +23,10 @@ def get_options_by_name(question_name):
 
 
 @frappe.whitelist(allow_guest=True)
-def get_question_option():
+def get_question_option(competition_title):
     question_option_dict = {}
 
-    for question_name in get_question_names():
+    for question_name in get_question_names(competition_title):
         question = get_question_by_name(question_name)
         question_option_lst = get_options_by_name(question_name)
         question_option_dict[question] = question_option_lst
@@ -35,26 +35,26 @@ def get_question_option():
 
 
 @frappe.whitelist(allow_guest=True)
-def get_translated_question(system_langg, question_text):
+def get_translated_question(question_text, system_lang = 'en'):
     translated_question = frappe.db.get_value('Translation',
                                               {'source_text': question_text[36:-10],
-                                               'language': system_langg},
+                                               'language': system_lang},
                                               'translated_text')
     return translated_question
 
 
 @frappe.whitelist(allow_guest=True)
-def get_translated_option(system_lan, option_text):
+def get_translated_option(option_text, system_lang = 'en'):
     translated_option = frappe.db.get_value('Translation',
                                               {'source_text': option_text,
-                                               'language': system_lan},
+                                               'language': system_lang},
                                               'translated_text')
     return translated_option
 
 # quiz_logic section..
-def get_correct_options():
+def get_correct_options(competition_title):
     all_correct_options = []
-    question_names = get_question_names()
+    question_names = get_question_names(competition_title)
     for quest_name in question_names:
         correct_options = frappe.db.get_list('Options',
                                             filters={
@@ -67,24 +67,24 @@ def get_correct_options():
 
 
 @frappe.whitelist(allow_guest=True)
-def get_quiz_score(selected_options):
+def get_quiz_score(selected_options, competition_title, passing_score):
     if isinstance(selected_options, six.string_types):
         selected_option_lst = json.loads(selected_options)
     global quiz_score
-    quiz_score = calculate_score(selected_option_lst)[0]
+    quiz_score = calculate_score(selected_option_lst, competition_title, passing_score)[0]
     global quiz_status
-    quiz_status = calculate_score(selected_option_lst)[1]
+    quiz_status = calculate_score(selected_option_lst, competition_title, passing_score)[1]
     return [quiz_score, quiz_status]
 
 
-def calculate_score(selected_option_lst):
-    correct_options = get_correct_options()
+def calculate_score(selected_option_lst, competition_title, passing_score):
+    correct_options = get_correct_options(competition_title)
     count = 0
     for itm in selected_option_lst:
         if itm in correct_options:
             count += 1
     total_score = float((count / len(correct_options)) * 100)
-    if total_score >= 75:
+    if total_score >= float(passing_score):
         return ["%.3f" % total_score, 'pass']  # f'{total_score:.3f} : pass'
     else:
         return ["%.3f" % total_score, 'fail']  # f'{total_score:.3f} : fail'
