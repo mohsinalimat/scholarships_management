@@ -1,3 +1,6 @@
+{% extends "templates/base.html" %}
+
+{% block content%}
 <!-- Quiz Section-->
 <div class="site-section bg-light" id="quiz-section">
     <div class="container-fluid">
@@ -7,8 +10,8 @@
                     <img id="qz-b" alt="Card image">
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 ml-auto">
+        </div> 
+        <!--<div class="col-lg-4 ml-auto">
             <h3 class="text-black">Quiz Conditions</h3>
             <p>
             <ul>
@@ -16,13 +19,14 @@
                 <li>To Pass You Must Get 75.0 or Higher</li>
             </ul>
             </p>
-        </div>
-        <hr/>
-        <form id="quiz-content" method="post">
-             
+        </div>-->
+        <hr />
+        <form id="quiz-content" method="post" style="margin: 5px;">
+
         </form>
-        <input class="col-md-3 ml-auto btn btn-block btn-primary text-white py-3 px-5" form="quiz-content" type="submit" value="Submit Quiz">
+        <input class="col-md-3 ml-auto btn btn-block btn-primary text-white py-3 px-5" form="quiz-content" type="submit"
+            value="{{_('Submit Quiz')}}">
     </div>
 </div>
-
 <script src="culturequiz/culturequiz.js"></script>
+{% endblock %}

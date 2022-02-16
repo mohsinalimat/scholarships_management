@@ -9,7 +9,22 @@ var passingScore = urlParams.get('passing_score');
 
 var quizBanner = urlParams.get('quiz_banner');
 //console.log(quizBanner);
-document.getElementById('qz-b').src = quizBanner;
+document.getElementById('qz-b').src = atob(quizBanner);
+
+/*
+frappe.call({
+    method: "scholarships_management.www.culturequiz.culturequiz.get_quiz_banner",
+    args: {
+        competition_name: competitionName
+    },
+    callback: function (rrrr) {
+        if (rrrr.message) {
+            document.getElementById('qz-b').src = rrrr.message;
+        } else {
+            document.getElementById('qz-b').src = "/files/dawah-33.png";
+        }
+    }
+});*/
 
 var quizContent = document.getElementById('quiz-content');
 
@@ -23,6 +38,7 @@ frappe.call({
         if (r.message) {
             Object.entries(r.message).forEach(function (value) {
                 let questionHeader = document.createElement("h1");
+                
                 frappe.call({
                     method: "scholarships_management.www.culturequiz.culturequiz.get_translated_question",
                     args: {

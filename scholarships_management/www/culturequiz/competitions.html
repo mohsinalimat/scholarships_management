@@ -3,7 +3,7 @@
 
 {% for competition in competitions_data %}
 <div class="card" style="text-align: center;">
-
+    <!-- or "/files/dawah-33.png" => default competiton icon..-->
     <img src='{{competition["competition_image"] or "/files/dawah-33.png"}}' alt="Card image" width="200px">
 
     <div class="card-body">
@@ -21,7 +21,14 @@
 
         {% set passing_score = competition['passing_score'] %}
         <p class="p-s" hidden>{{ passing_score }}</p>
-        <button class="btn btn-primary" type="submit">{{_('Start Quiz')}}</button>
+        {% if frappe.session.user == 'Administrator' %}
+            <p class="u-r" hidden>Administrator</p>
+            <button class="btn btn-primary" type="submit">{{_('View Quiz')}}</button>
+        {% else %}
+            <p class="u-r" hidden>Guest</p>
+            <button class="btn btn-primary" type="submit">{{_('Start Quiz')}}</button>
+        {% endif %}
+        
     </div>
 </div>
 {% endfor %}

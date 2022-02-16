@@ -88,3 +88,8 @@ def calculate_score(selected_option_lst, competition_title, passing_score):
         return ["%.3f" % total_score, 'pass']  # f'{total_score:.3f} : pass'
     else:
         return ["%.3f" % total_score, 'fail']  # f'{total_score:.3f} : fail'
+
+
+@frappe.whitelist(allow_guest=True)
+def get_quiz_banner(competition_name):
+    return frappe.db.get_value('Competition', competition_name, 'quiz_banner')
