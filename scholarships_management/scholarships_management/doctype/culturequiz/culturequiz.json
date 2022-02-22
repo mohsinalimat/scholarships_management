@@ -10,9 +10,23 @@
  "field_order": [
   "personal_data_section",
   "full_name",
+  "section_break_3",
+  "national_id",
+  "nationality",
+  "birth_date",
+  "column_break_7",
+  "passport_id",
   "gender",
+  "section_break_10",
   "phone_number",
+  "phone_number_2",
   "email_address",
+  "education_data_section",
+  "educational_degree",
+  "educational_degree_date",
+  "column_break_17",
+  "educational_degree_source",
+  "current_work",
   "quiz_data_section",
   "quiz_score",
   "quiz_status",
@@ -44,7 +58,7 @@
    "fieldname": "phone_number",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Phone Number",
+   "label": "Phone Number 1",
    "reqd": 1
   },
   {
@@ -161,7 +175,6 @@
   {
    "fieldname": "route",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "Route",
    "read_only": 1
   },
@@ -171,13 +184,86 @@
    "fieldtype": "Check",
    "hidden": 1,
    "label": "Published"
+  },
+  {
+   "fieldname": "phone_number_2",
+   "fieldtype": "Data",
+   "label": "Phone Number 2"
+  },
+  {
+   "fieldname": "national_id",
+   "fieldtype": "Data",
+   "label": "National ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "passport_id",
+   "fieldtype": "Data",
+   "label": "Passport ID"
+  },
+  {
+   "fieldname": "birth_date",
+   "fieldtype": "Date",
+   "label": "Birth Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "label": "Nationality",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "educational_degree",
+   "fieldtype": "Data",
+   "label": "Educational Degree",
+   "reqd": 1
+  },
+  {
+   "fieldname": "educational_degree_date",
+   "fieldtype": "Date",
+   "label": "Educational Degree Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "educational_degree_source",
+   "fieldtype": "Data",
+   "label": "Educational Degree Source",
+   "reqd": 1
+  },
+  {
+   "fieldname": "current_work",
+   "fieldtype": "Data",
+   "label": "Current Work"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "education_data_section",
+   "fieldtype": "Section Break",
+   "label": "education data"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-02-15 15:37:20.245322",
+ "modified": "2022-02-21 18:40:33.205777",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Culturequiz",

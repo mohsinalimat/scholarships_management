@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-21 13:15:55.465540",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "default_quiz_icon"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_quiz_icon",
+   "fieldtype": "Attach Image",
+   "label": "Default Quiz Banner"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-02-21 14:58:35.756923",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Default Quiz Banner",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

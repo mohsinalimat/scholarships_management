@@ -11,20 +11,45 @@ var quizBanner = urlParams.get('quiz_banner');
 //console.log(quizBanner);
 document.getElementById('qz-b').src = atob(quizBanner);
 
-/*
+var lang = urlParams.get('_lang');
+
+if (lang == '' || lang == 'null') {
+    lang = 'en';
+}
+
+// language picker..
 frappe.call({
-    method: "scholarships_management.www.culturequiz.culturequiz.get_quiz_banner",
-    args: {
-        competition_name: competitionName
-    },
-    callback: function (rrrr) {
-        if (rrrr.message) {
-            document.getElementById('qz-b').src = rrrr.message;
-        } else {
-            document.getElementById('qz-b').src = "/files/dawah-33.png";
+    method: "scholarships_management.www.culturequiz.competitions.get_enabled_languages",
+    callback: function (r) {
+        if (r.message) {
+            var docHeader = document.getElementsByClassName("container")[0];
+            
+            var langSwitcher = document.createElement('select');
+            langSwitcher.id = "langSwitcherID";
+            langSwitcher.style.padding = '5px';
+            docHeader.appendChild(langSwitcher);
+
+            var opt = document.createElement('option');
+            opt.value = '';
+            opt.text = 'Select Language';
+            langSwitcher.appendChild(opt);
+            
+            Object.entries(r.message).forEach((value) => {
+                var opt = document.createElement('option');
+                opt.value = value[1][0];
+                opt.text = value[1][1];
+                langSwitcher.appendChild(opt);
+            });
+
+            langSwitcher.addEventListener('change', function() {
+                if (this.value !== ''){
+                    lang = this.value;
+                    window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz/culturequiz?competition_name=' + competitionName + '&passing_score=' + passingScore + '&quiz_banner=' + quizBanner + '&_lang=' + lang);
+                }
+            });
         }
     }
-});*/
+});
 
 var quizContent = document.getElementById('quiz-content');
 
@@ -37,13 +62,16 @@ frappe.call({
     callback: function (r) {
         if (r.message) {
             Object.entries(r.message).forEach(function (value) {
-                let questionHeader = document.createElement("h1");
-                
+                let questionHeader = document.createElement("h4");
+                //console.log(frappe.preferred_language);
+                var el = document.createElement('div');
+                el.innerHTML = value[0];
+                var questionText = el.getElementsByTagName('p')[0].innerHTML;
                 frappe.call({
                     method: "scholarships_management.www.culturequiz.culturequiz.get_translated_question",
                     args: {
-                        system_lang: frappe.preferred_language,
-                        question_text: value[0]
+                        system_lang: lang,
+                        question_text: questionText
                     },
                     callback: function (rr) {
                         if (rr.message) {
@@ -87,7 +115,7 @@ function setAnswers(values) {
         frappe.call({
             method: "scholarships_management.www.culturequiz.culturequiz.get_translated_option",
             args: {
-                system_lang: frappe.preferred_language,
+                system_lang: lang,
                 option_text: values[optn]
             },
             callback: function (rrr) {
@@ -127,11 +155,20 @@ quizContent.addEventListener('submit', (event) => {
             if (r.message) {
                 var quizScore = r.message[0];
                 var quizStatus = r.message[1];
-                window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz?new=1&quiz_score=' + btoa(quizScore) + '&quiz_status=' + btoa(quizStatus) + '&competition=' + competitionName)
+                window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz?new=1&quiz_score=' + btoa(quizScore) + '&quiz_status=' + btoa(quizStatus) + '&competition=' + competitionName + '&_lang=' + lang)
             }
         }
     });
     event.preventDefault();
 });
 
+
+if (lang == 'ar') {
+    for (let qindx = 0; qindx < document.getElementsByClassName('ql-editor read-mode').length; qindx++ ){
+        document.getElementsByClassName('ql-editor read-mode')[qindx].style.textAlign='right';
+        document.getElementsByClassName('ql-editor read-mode')[qindx].style.direction = 'rtl';
+    }
+    document.getElementsByClassName('row')[1].style.textAlign='right';
+    document.getElementsByClassName('row')[1].style.direction = 'rtl';
+}
 

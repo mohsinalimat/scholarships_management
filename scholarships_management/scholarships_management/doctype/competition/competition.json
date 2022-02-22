@@ -43,14 +43,14 @@
   },
   {
    "fieldname": "start_date",
-   "fieldtype": "Datetime",
+   "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Start Date",
    "reqd": 1
   },
   {
    "fieldname": "end_date",
-   "fieldtype": "Datetime",
+   "fieldtype": "Date",
    "in_list_view": 1,
    "label": "End Date",
    "reqd": 1
@@ -85,7 +85,7 @@
  "image_field": "competition_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-15 11:42:09.708018",
+ "modified": "2022-02-17 15:28:35.840757",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Competition",
@@ -118,5 +118,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "competition_title"
+ "title_field": "competition_title",
+ "track_views": 1
 }

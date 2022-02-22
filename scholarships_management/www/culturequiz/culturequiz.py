@@ -37,7 +37,7 @@ def get_question_option(competition_title):
 @frappe.whitelist(allow_guest=True)
 def get_translated_question(question_text, system_lang = 'en'):
     translated_question = frappe.db.get_value('Translation',
-                                              {'source_text': question_text[36:-10],
+                                              {'source_text': question_text,
                                                'language': system_lang},
                                               'translated_text')
     return translated_question
