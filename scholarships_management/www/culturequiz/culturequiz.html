@@ -9,23 +9,23 @@
                 <img id="qz-b" style="width:90%; height: auto;">
             </div>
         </div>
-        <!--<div class="col-lg-4 ml-auto">
-            <h3 class="text-black">Quiz Conditions</h3>
-            <p>
-            <ul>
-                <li>Only One Attempt Available</li>
-                <li>To Pass You Must Get 75.0 or Higher</li>
-            </ul>
-            </p>
-        </div>-->
+
+        <div class="text-center">
+            <h3 class="text-black">{{_('Quiz Questions')}}</h3>
+        </div>
         <hr />
-        <div class="row" style="margin: 5px;">
-            <form id="quiz-content" method="post" style="margin: 5px; padding: 1px;">
+
+        <div class="row" style="margin: 5px; padding: 5px;">
+            <form id="quiz-content" method="post">
             </form>
 
-            <input class="col-md-3 ml-auto btn btn-block btn-primary text-white py-3 px-5" form="quiz-content"
-                type="submit" value="{{_('Submit Quiz')}}">
+            <!--<input class="col-md-3 ml-auto btn btn-block btn-primary text-white py-3 px-5" form="quiz-content"
+                type="submit" value="{{_('Submit Quiz')}}">-->
         </div>
+        <div class="text-center">
+            <button class="btn btn-primary" form="quiz-content" type="submit">{{_('Submit Quiz')}}</button>
+        </div>
+
     </div>
 </div>
 <script src="culturequiz/culturequiz.js"></script>

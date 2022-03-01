@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-23 15:11:57.648559",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "competitor",
+  "national_id",
+  "nationality",
+  "quiz_score"
+ ],
+ "fields": [
+  {
+   "fieldname": "competitor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Competitor",
+   "options": "Culturequiz"
+  },
+  {
+   "fetch_from": "competitor.national_id",
+   "fieldname": "national_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "National ID"
+  },
+  {
+   "fetch_from": "competitor.nationality",
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nationality"
+  },
+  {
+   "fetch_from": "competitor.quiz_score",
+   "fieldname": "quiz_score",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Quiz Score"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-02-23 15:19:44.404098",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Candidates Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

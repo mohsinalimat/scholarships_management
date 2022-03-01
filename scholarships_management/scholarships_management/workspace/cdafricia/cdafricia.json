@@ -136,9 +136,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Candidates",
+   "link_to": "Candidates",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-02-21 14:54:16.391616",
+ "modified": "2022-02-23 16:00:49.202770",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "CDAFRICIA",

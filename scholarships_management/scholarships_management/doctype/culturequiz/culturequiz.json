@@ -23,9 +23,7 @@
   "email_address",
   "education_data_section",
   "educational_degree",
-  "educational_degree_date",
   "column_break_17",
-  "educational_degree_source",
   "current_work",
   "quiz_data_section",
   "quiz_score",
@@ -216,20 +214,9 @@
   },
   {
    "fieldname": "educational_degree",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Educational Degree",
-   "reqd": 1
-  },
-  {
-   "fieldname": "educational_degree_date",
-   "fieldtype": "Date",
-   "label": "Educational Degree Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "educational_degree_source",
-   "fieldtype": "Data",
-   "label": "Educational Degree Source",
+   "options": "None\nPrimary\nPreparatory\nSecondary\nUniversity\nPostgraduate",
    "reqd": 1
   },
   {
@@ -263,7 +250,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-02-21 18:40:33.205777",
+ "modified": "2022-02-26 16:40:56.085274",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Culturequiz",

@@ -16,7 +16,8 @@
   "section_break_8",
   "start_date",
   "column_break_10",
-  "end_date"
+  "end_date",
+  "is_active"
  ],
  "fields": [
   {
@@ -80,12 +81,21 @@
    "fieldname": "quiz_banner",
    "fieldtype": "Attach Image",
    "label": "Quiz Banner"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active",
+   "reqd": 1
   }
  ],
  "image_field": "competition_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-17 15:28:35.840757",
+ "modified": "2022-02-23 14:16:12.135593",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Competition",

@@ -19,7 +19,7 @@ if (lang == '' || lang == 'null') {
 
 // language picker..
 frappe.call({
-    method: "scholarships_management.www.culturequiz.competitions.get_enabled_languages",
+    method: "scholarships_management.www.culturequiz.lang_picker.get_enabled_languages",
     callback: function (r) {
         if (r.message) {
             var docHeader = document.getElementsByClassName("container")[0];
@@ -29,11 +29,30 @@ frappe.call({
             langSwitcher.style.padding = '5px';
             docHeader.appendChild(langSwitcher);
 
-            var opt = document.createElement('option');
-            opt.value = '';
-            opt.text = 'Select Language';
-            langSwitcher.appendChild(opt);
-            
+            var defaultopt = document.createElement('option');
+            defaultopt.id = 'defaultoptt'; 
+            defaultopt.value = '';
+            // make default selected option hidden..
+            defaultopt.selected = true;
+            defaultopt.disabled = true;
+            defaultopt.style.display = 'none';
+            defaultopt.text = ''; 
+            langSwitcher.appendChild(defaultopt);
+            // change default selected option text based on current used language..
+            frappe.call({
+                method: "scholarships_management.www.culturequiz.lang_picker.get_current_selected_language",
+                args: {
+                    lang_code: lang
+                },
+                callback: function (r) {
+                    if (r.message){
+                        document.getElementById('defaultoptt').innerHTML = r.message;
+                    } else {
+                        document.getElementById('defaultoptt').innerHTML = 'Select Language';
+                    }
+                }
+            });
+            // list of options based on enabled languages..
             Object.entries(r.message).forEach((value) => {
                 var opt = document.createElement('option');
                 opt.value = value[1][0];
@@ -61,8 +80,8 @@ frappe.call({
     async: false,
     callback: function (r) {
         if (r.message) {
-            Object.entries(r.message).forEach(function (value) {
-                let questionHeader = document.createElement("h4");
+            Object.entries(r.message).forEach(function (value, index) {
+                let questionHeader = document.createElement("h3");
                 //console.log(frappe.preferred_language);
                 var el = document.createElement('div');
                 el.innerHTML = value[0];
@@ -74,14 +93,29 @@ frappe.call({
                         question_text: questionText
                     },
                     callback: function (rr) {
+                        var horizontalLine = document.createElement("hr");
+                        horizontalLine.style.width = '100%';
+                        horizontalLine.style.margin ='auto';
+                        horizontalLine.style.borderTop = '1px solid';
+                        
                         if (rr.message) {
                             questionHeader.innerHTML = rr.message;
+                            questionHeader.style.fontFamily = "al-mohannad";
+                            questionHeader.style.fontWeight = "100px";
                             quizContent.appendChild(questionHeader);
                             setAnswers(value[1]);
+                            quizContent.appendChild(document.createElement("br"));
+                            quizContent.appendChild(horizontalLine);//br
+                            quizContent.appendChild(document.createElement("br"));
                         } else {
                             questionHeader.innerHTML = value[0];
+                            questionHeader.style.fontFamily = "al-mohannad";
+                            questionHeader.style.fontWeight = "100px";
                             quizContent.appendChild(questionHeader);
                             setAnswers(value[1]);
+                            quizContent.appendChild(document.createElement("br"));
+                            quizContent.appendChild(horizontalLine);//br
+                            quizContent.appendChild(document.createElement("br"));
                         }
                     }
                 });
@@ -104,6 +138,8 @@ function setAnswers(values) {
         // create radio button..
         let radioBtn = document.createElement("input");
         radioBtn.type = "radio";
+        radioBtn.style.fontWeight = 'bold';
+        
         radioBtn.name = values[0];
         radioBtn.id = values[optn];
         radioBtn.value = values[optn];
@@ -111,6 +147,8 @@ function setAnswers(values) {
         quizContent.appendChild(radioBtn);
         // create label for radio button..
         let option = document.createElement("label");
+        option.style.fontFamily = "al-mohannad";
+        option.style.fontWeight = "100px";
 
         frappe.call({
             method: "scholarships_management.www.culturequiz.culturequiz.get_translated_option",
@@ -132,7 +170,7 @@ function setAnswers(values) {
         option.htmlFor = radioBtn.id;
         option.appendChild(radioBtn);
         quizContent.appendChild(option);
-        quizContent.appendChild(document.createElement("br"));
+        quizContent.appendChild(document.createElement("br"));//hr
     }
 }
 
@@ -164,11 +202,50 @@ quizContent.addEventListener('submit', (event) => {
 
 
 if (lang == 'ar') {
-    for (let qindx = 0; qindx < document.getElementsByClassName('ql-editor read-mode').length; qindx++ ){
+    var qlEditorLength = document.getElementsByClassName('ql-editor read-mode').length ;
+    for (let qindx = 0; qindx < qlEditorLength; qindx++ ){
         document.getElementsByClassName('ql-editor read-mode')[qindx].style.textAlign='right';
         document.getElementsByClassName('ql-editor read-mode')[qindx].style.direction = 'rtl';
+        document.getElementsByClassName('ql-editor read-mode')[qindx].style.margin = '10px';
+        document.getElementsByClassName('ql-editor read-mode')[qindx].style.padding = '10px';
     }
+
+    for (let spanIndx = 0; spanIndx < document.getElementsByTagName('span').length; spanIndx++  ){
+        document.getElementsByTagName('span')[spanIndx].setAttribute('style', 'font-family:"al-mohannad", sans;');
+        //document.getElementsByTagName('span')[spanIndx].style.fontFamily="al-mohannad";
+        document.getElementsByTagName('span')[spanIndx].style.fontWeight = "100px";
+    }
+
     document.getElementsByClassName('row')[1].style.textAlign='right';
     document.getElementsByClassName('row')[1].style.direction = 'rtl';
+    
+    for (let inptIndx = 0; inptIndx < document.getElementsByTagName('input').length; inptIndx){
+        document.getElementsByTagName('input')[inptIndx].style.marginLeft = '5px';
+    }
+
+    document.getElementsByClassName('ql-editor read-mode')[qlEditorLength -1].style.margin = '1px';
+    document.getElementsByClassName('ql-editor read-mode')[qlEditorLength -1].style.padding = '1px';
+
+}
+window.onload = () => {
+    // run in onload
+    setTimeout(() => {
+    if(lang == 'ar') {
+    for (let spanIndx = 0; spanIndx < document.getElementsByTagName('span').length; spanIndx++  ){
+        if (spanIndx !=0 && spanIndx !=  document.getElementsByTagName('span').length -1 ){
+            document.getElementsByClassName('ql-editor read-mode')[spanIndx].getElementsByTagName('p')[0].getElementsByTagName('span')[0].innerHTML = (spanIndx).toString() + document.getElementsByClassName('ql-editor read-mode')[spanIndx].innerHTML;
+        }
+        document.getElementsByClassName('ql-editor read-mode')[spanIndx].setAttribute('style', 'font-family:"al-mohannad" !important;font-weight: 100');
+        
+    }
+    
+    for (let spanIndx = 0; spanIndx < document.getElementsByTagName('input').length; spanIndx++  ){
+        document.getElementsByTagName('input')[spanIndx].setAttribute('style', 'position: relative;left: 5px;');
+    }
+    document.getElementsByClassName('ql-editor read-mode')[0].getElementsByTagName('p')[0].style.textAlign ='right';
+    }
+    //alert("done");
+}, 3000)
 }
 
+    //alert("done");

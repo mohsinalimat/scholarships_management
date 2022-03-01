@@ -1,12 +1,14 @@
 {% set competitions_data = frappe.get_list('Competition', fields=['competition_image', 'competition_title',
-'competition_description', 'passing_score', 'name', 'quiz_banner', 'end_date'], order_by='creation') %}
+'competition_description', 'passing_score', 'name', 'quiz_banner', 'end_date', 'is_active'], order_by='creation') %}
 
 {% for competition in competitions_data %}
 <div class="container">
     <div class="all-qz-contnt">
-        <div class="text-center" style="margin: 5px;">
-            {% set DefaultCompetitionIcon = frappe.db.get_single_value('Default Competition Icon', 'default_competition_icon') %}
-            <img src='{{competition["competition_image"] or DefaultCompetitionIcon}}'  width="200px" class="rounded">
+        {% set DefaultCompetitionIcon = frappe.db.get_single_value('Default Competition Icon','default_competition_icon') %}
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <img src='{{competition["competition_image"] or DefaultCompetitionIcon}}' style="width:90%; height: auto;">
+            </div>
         </div>
         <!-- sent data -->
         {% set competition_name = competition['name'] %}
@@ -22,20 +24,25 @@
         {% set passing_score = competition['passing_score'] %}
         <p class="p-s" hidden>{{ passing_score }}</p>
 
-        <div class="text-center" style="margin: 5px;">
-            
-            {% set competition_title = competition['competition_title'] %}
-            <h4 class="card-title" style="margin: 5px;">{{ _(competition_title) }}</h4>
+        {% set is_active = competition['is_active'] %}
+        <p class="i-a" hidden>{{ is_active }}</p>
 
+        <div class="text-center" style="margin: 5px;">
+
+            {% set competition_title = competition['competition_title'] %}
             {% set competition_description = competition['competition_description'] %}
-            <p class="card-text">{{ _(competition_description) }}</p>
-            
+
+            <div class="jumbotron">
+                <h4 style="font-family:'al-mohannad' !important ;font-weight: bold;">{{_(competition_title)}}</h4>
+                <p style="font-family:'al-mohannad' !important ;font-weight: 100px;">{{_(competition_description)}}</p>
+            </div>
+
             {% if frappe.session.user == 'Administrator' %}
                 <p class="u-r" hidden>Administrator</p>
-                <button class="btn btn-primary" type="submit">{{_('View Quiz')}}</button>
+                <button class="btn btn-primary" type="submit" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{_('View Quiz')}}</button>
             {% else %}
                 <p class="u-r" hidden>Guest</p>
-                <button class="btn btn-primary" type="submit">{{_('Start Quiz')}}</button>
+                <button class="btn btn-primary" type="submit" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{_('Start Quiz')}}</button>
             {% endif %}
         </div>
     </div>

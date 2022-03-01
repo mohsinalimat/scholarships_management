@@ -7,6 +7,8 @@ from datetime import datetime
 
 
 class Competition(Document):
+	pass
+"""
 	def before_save(self):
 		#frappe.throw(f'End-Date: {self.end_date} Start-Date: {self.start_date} current-date: {str(datetime.now().date())}')
 		crnt_date = str(datetime.now().date())
@@ -20,6 +22,6 @@ class Competition(Document):
 		if(strt_date < crnt_date):
 			frappe.throw('Start-Date Cannot be less than Current-Date')
 		if (nd_date == crnt_date):
-			frappe.throw('End-Date Can not equal Current-Date')
+			frappe.throw('End-Date Can not equal Current-Date')"""
 		
 
