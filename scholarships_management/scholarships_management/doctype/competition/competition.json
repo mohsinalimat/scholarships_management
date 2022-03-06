@@ -13,6 +13,7 @@
   "quiz_banner",
   "section_break_6",
   "competition_description",
+  "quiz_description",
   "section_break_8",
   "start_date",
   "column_break_10",
@@ -90,12 +91,18 @@
    "in_standard_filter": 1,
    "label": "Is Active",
    "reqd": 1
+  },
+  {
+   "fieldname": "quiz_description",
+   "fieldtype": "Text Editor",
+   "label": "Quiz Description",
+   "translatable": 1
   }
  ],
  "image_field": "competition_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-23 14:16:12.135593",
+ "modified": "2022-03-02 12:47:47.093108",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Competition",

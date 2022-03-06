@@ -2,18 +2,21 @@ import frappe
 import json
 import six
 
-# question_option section..
+
 def get_question_names(competition_title):
+    """get active question names based on selected competition"""
     question_names = frappe.db.get_list(
         'Question', filters={'is_active': 1, 'competition': competition_title}, pluck='name', order_by='creation')
     return question_names
 
 
 def get_question_by_name(question_name):
+    """get question text based on value of question_name"""
     return frappe.db.get_value('Question', question_name, 'question')
 
 
 def get_options_by_name(question_name):
+    """get question ordered options based on value of question_name"""
     option_list = frappe.db.get_list('Options',
                                      filters={
                                          'parent': question_name
@@ -24,6 +27,7 @@ def get_options_by_name(question_name):
 
 @frappe.whitelist(allow_guest=True)
 def get_question_option(competition_title):
+    """get question with related options based on value of competition_title"""
     question_option_dict = {}
 
     for question_name in get_question_names(competition_title):
@@ -59,15 +63,6 @@ def get_quiz_description(competition_name):
     return quiz_description
 
 
-@frappe.whitelist(allow_guest=True)
-def get_translated_quiz_description(quiz_description, system_lang='en'):
-    translated_quiz_description = frappe.db.get_value('Translation',
-                                                      {'source_text': quiz_description,
-                                                       'language': system_lang},
-                                                      'translated_text')
-    return translated_quiz_description
-
-# quiz_logic section..
 def get_correct_options(competition_title):
     all_correct_options = []
     question_names = get_question_names(competition_title)

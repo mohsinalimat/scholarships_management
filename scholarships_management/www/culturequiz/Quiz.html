@@ -6,29 +6,24 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <img id="qz-b" style="width:90%; height: auto;">
+                <img id="qz-b" style="width:95%; height: auto;">
             </div>
         </div>
         <div class="container">
-            <div class="jumbotron" id="quizDescription"
-                style="font-family:'al-mohannad' !important;font-weight: 100px;">
-                <!--<p id="quizDescription" style="font-family:'al-mohannad' !important;font-weight: 100px;"></p>-->
+            <div class="jumbotron">
+                <p id="quizDescription" style="font-family:'al-mohannad' !important ;"></p>
             </div>
         </div>
         <hr />
 
-        <div class="row" style="margin: 5px; padding: 5px;">
+        <div class="row" style="margin: 5px; padding: 5px; font-family:'al-mohannad' !important ; font-weight: 100px;">
             <form id="quiz-content" method="post">
             </form>
-
-            <!--<input class="col-md-3 ml-auto btn btn-block btn-primary text-white py-3 px-5" form="quiz-content"
-                type="submit" value="{{_('Submit Quiz')}}">-->
         </div>
         <div class="text-center">
             <button class="btn btn-primary" form="quiz-content" type="submit">{{_('Submit Quiz')}}</button>
         </div>
-
     </div>
 </div>
-<script src="culturequiz/culturequiz.js"></script>
+<script src="culturequiz/Quiz.js"></script>
 {% endblock %}

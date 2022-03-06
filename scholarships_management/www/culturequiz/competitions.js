@@ -52,7 +52,7 @@ if (document.getElementsByClassName("u-r")[0].innerHTML !== 'Administrator'){
                 langSwitcher.addEventListener('change', function () {
                     if (this.value !== '') {
                         lang = this.value;
-                        window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz/competitions' + '?_lang=' + lang);
+                        window.location.replace('https://test.cdafricaa.com/culturequiz/competitions' + '?_lang=' + lang);
                     }
                 });
             }
@@ -101,11 +101,12 @@ for (let indx = 0; indx < startQuizBtn.length; indx++) {
             return frappe.call({
                 method: 'logout',
                 callback: function (r) {
-                    window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz/culturequiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
+                    window.location.replace('https://test.cdafricaa.com/culturequiz/culturequiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
                 }
             });
         } else { // guest case
-            window.location.replace('https://ao-erpnext.sky.slnee.com/culturequiz/culturequiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
+            window.location.replace('https://test.cdafricaa.com/culturequiz/culturequiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
+            //window.open('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
         }
     });
 }
