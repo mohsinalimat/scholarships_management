@@ -5,7 +5,7 @@ if (lang == '' || lang == 'null') {
     lang = 'en';
 }
 // to avoid "invalid request" error in case of administrator 
-if (document.getElementsByClassName("u-r")[0].innerHTML !== 'Administrator'){
+if (document.getElementsByClassName("u-r")[0].innerHTML !== 'Administrator') {
     // language picker..
     frappe.call({
         method: "scholarships_management.www.culturequiz.lang_picker.get_enabled_languages",
@@ -19,13 +19,13 @@ if (document.getElementsByClassName("u-r")[0].innerHTML !== 'Administrator'){
                 docHeader.appendChild(langSwitcher);
 
                 var defaultopt = document.createElement('option');
-                defaultopt.id = 'defaultoptt'; 
+                defaultopt.id = 'defaultoptt';
                 defaultopt.value = '';
                 // make default selected option hidden..
                 defaultopt.selected = true;
                 defaultopt.disabled = true;
-                defaultopt.style.display = 'none';
-                defaultopt.text = ''; 
+                //defaultopt.style.display = 'none';
+                //defaultopt.text = ''; 
                 langSwitcher.appendChild(defaultopt);
                 // change default selected option text based on current used language..
                 frappe.call({
@@ -34,7 +34,7 @@ if (document.getElementsByClassName("u-r")[0].innerHTML !== 'Administrator'){
                         lang_code: lang
                     },
                     callback: function (r) {
-                        if (r.message){
+                        if (r.message) {
                             document.getElementById('defaultoptt').innerHTML = r.message;
                         } else {
                             document.getElementById('defaultoptt').innerHTML = 'Select Language';
@@ -74,7 +74,7 @@ var crnt_date = getDateOnly();
 // items to be hidden based on End date
 var tc = document.getElementsByClassName('all-qz-contnt');
 
-for (let indx = 0; indx < startQuizBtn.length; indx++) { 
+for (let indx = 0; indx < startQuizBtn.length; indx++) {
 
     var parmND_DT = nd_dt[indx].innerHTML;
     var parmI_A = i_a[indx].innerHTML;
@@ -101,12 +101,11 @@ for (let indx = 0; indx < startQuizBtn.length; indx++) {
             return frappe.call({
                 method: 'logout',
                 callback: function (r) {
-                    window.location.replace('https://test.cdafricaa.com/culturequiz/culturequiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
+                    window.location.replace('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
                 }
             });
         } else { // guest case
-            window.location.replace('https://test.cdafricaa.com/culturequiz/culturequiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
-            //window.open('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
+            window.location.replace('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
         }
     });
 }

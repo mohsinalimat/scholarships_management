@@ -17,7 +17,13 @@ if (lang == '' || lang == 'null') {
     lang = 'en';
 }
 
-
+const checkTranslation = function (langValue) {
+    if (langValue === 'ar' || langValue === 'en') {
+        window.location.replace('https://test.cdafricaa.com/culturequiz/culturequiz?competition_name=' + competitionName + '&passing_score=' + passingScore + '&quiz_banner=' + quizBanner + '&_lang=' + langValue);
+    } else {
+        window.location.replace('https://test.cdafricaa.com/culturequiz/loadingTranslation?_lang=' + langValue);
+    }
+}
 // language picker..
 frappe.call({
     method: "scholarships_management.www.culturequiz.lang_picker.get_enabled_languages",
@@ -64,11 +70,12 @@ frappe.call({
             langSwitcher.addEventListener('change', function () {
                 if (this.value !== '') {
                     lang = this.value;
-                    if (lang !== 'ar' || lang !== 'en') {
-                        window.location.replace('https://test.cdafricaa.com/culturequiz/loadingTranslation');
+                    checkTranslation(lang);
+                    /*if (lang != 'ar' || lang != 'en') {
+                        window.location.replace('https://test.cdafricaa.com/culturequiz/loadingTranslation?_lang=' + lang);
                     } else {
                         window.location.replace('https://test.cdafricaa.com/culturequiz/culturequiz?competition_name=' + competitionName + '&passing_score=' + passingScore + '&quiz_banner=' + quizBanner + '&_lang=' + lang);
-                    }
+                    }*/
                 }
             });
         }

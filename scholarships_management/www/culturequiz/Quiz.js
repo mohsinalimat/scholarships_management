@@ -11,9 +11,13 @@ if (lang == '' || lang == 'null') {
     lang = 'en';
 }
 
-var d = new Date();
-console.log('first frappe.call "language picker:"' + d.getHours() % 12 + ':' + d.getMinutes() + ':' + d.getSeconds())
-
+const checkTranslation = function (langValue) {
+    if (langValue === 'ar' || langValue === 'en' || langValue === 'pt' || langValue === 'ha') {
+        window.location.replace('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + competitionName + '&passing_score=' + passingScore + '&quiz_banner=' + quizBanner + '&_lang=' + langValue);
+    } else {
+        window.location.replace('https://test.cdafricaa.com/culturequiz/loadingTranslation?_lang=' + langValue);
+    }
+}
 // language picker..
 frappe.call({
     method: "scholarships_management.www.culturequiz.lang_picker.get_enabled_languages",
@@ -32,8 +36,8 @@ frappe.call({
             // make default selected option hidden..
             defaultopt.selected = true;
             defaultopt.disabled = true;
-            defaultopt.style.display = 'none';
-            defaultopt.text = '';
+            //defaultopt.style.display = 'none';
+            //defaultopt.text = '';
             langSwitcher.appendChild(defaultopt);
             // change default selected option text based on current used language..
             frappe.call({
@@ -60,26 +64,344 @@ frappe.call({
             langSwitcher.addEventListener('change', function () {
                 if (this.value !== '') {
                     lang = this.value;
-                    window.location.replace('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + competitionName + '&passing_score=' + passingScore + '&quiz_banner=' + quizBanner + '&_lang=' + lang);
+                    checkTranslation(lang);
                 }
             });
         }
     }
 });
 
-var dd = new Date();
-console.log('second frappe.call "listing questions and options:"' + dd.getHours() % 12 + ':' + dd.getMinutes() + ':' + dd.getSeconds())
+// quiz description..
+frappe.call({
+    method: "scholarships_management.www.culturequiz.Quiz.get_quiz_description",
+    args: {
+        competition_name: competitionName,
+        system_lang: lang
+    },
+    callback: function (r) {
+        if (r.message) {
+            document.getElementById('quizDescription').innerHTML = r.message;
+        }
+    }
+});
+
 
 var quizContent = document.getElementById('quiz-content');
 
+function changeColor(event) {
+    //debugger;
+    // The event's `target` property holds the element where the event happened
+    const localReferenceToTheTextArea = event.target;
+    // The text of a textarea  element lives in its `value` property
+    localReferenceToTheTextArea.style.backgroundColor = 'lime';
+    //console.log(text);
+}
 
-var horizontalLine = document.createElement("hr");
-horizontalLine.style.width = '100%';
-horizontalLine.style.margin = 'auto';
-horizontalLine.style.borderTop = '1px solid';
+function returnColor(event) {
+    //debugger;
+    // The event's `target` property holds the element where the event happened
+    const localReferenceToTheTextArea = event.target;
+    // The text of a textarea  element lives in its `value` property
+    localReferenceToTheTextArea.style.backgroundColor = 'yellow';
+    //console.log(text);
+}
 
-function getQuest(question_option_lst) {
+
+const setAnswers = function (values) {
+    let crntTime = (new Date().getTime()).toString()
+
+    for (let optn in values) {
+        // create radio button..
+        let radioBtn = document.createElement("input");
+        radioBtn.type = "radio";
+        radioBtn.name = values[0] + crntTime; // to avoid repeated first name.. 
+        radioBtn.id = values[optn] + crntTime; // to avoid multi answers with the same name..
+        radioBtn.value = values[optn];
+        //radioBtn.required = true;
+
+        //radioBtn.addEventListener("click", changeColor);
+        //radioBtn.addEventListener("blur", returnColor);
+
+        // create label for radio button..
+        let option = document.createElement("label");
+        option.style.fontFamily = "al-mohannad";
+        option.style.fontWeight = "70px";
+        let optionTxt = document.createTextNode(values[optn]);
+        option.appendChild(optionTxt);
+        option.htmlFor = radioBtn.id;
+
+        radioBtn.appendChild(option);
+        quizContent.appendChild(radioBtn);
+        quizContent.appendChild(option);
+
+        option.addEventListener("click", changeColor);
+        option.addEventListener("blur", returnColor);
+
+        quizContent.appendChild(document.createElement("br"));//hr
+    }
+}
+
+const transquets = function () {
+    frappe.call({
+        method: "scholarships_management.www.culturequiz.Quiz.get_questions_options",
+        args: {
+            competition_title: competitionName,
+            system_lang: lang
+        },
+        callback: function (oqn) {
+            Object.entries(oqn.message).forEach(function (val) {
+                //console.log(val[0]); // question text
+
+                //document.appendChild("<div>");
+                let questionHeader = document.createElement("h3");
+                questionHeader.innerHTML = val[0];
+                questionHeader.style.fontFamily = "al-mohannad";
+                questionHeader.style.fontWeight = "100px";
+                quizContent.appendChild(questionHeader);
+                quizContent.appendChild(document.createElement("br"));
+
+                //console.log(val[1]); // option list
+                setAnswers(val[1]);
+                //document.appendChild("</div>");
+                var horizontalLine = document.createElement("hr");
+                horizontalLine.style.width = '100%';
+                horizontalLine.style.margin = 'auto';
+                horizontalLine.style.borderTop = '1px solid';
+                quizContent.appendChild(document.createElement("br"));
+                quizContent.appendChild(horizontalLine);
+                quizContent.appendChild(document.createElement("br"));
+            });
+        }
+    });
+}
+transquets();
+
+window.onload = () => {
+    // numbering of questions ..
+    setTimeout(function () {
+        if (lang == 'ar' || lang == 'ha') {
+            document.getElementsByClassName('row')[1].style.textAlign = 'right';
+            document.getElementsByClassName('row')[1].style.direction = 'rtl';
+
+            var numOfOptionLabels = document.getElementsByTagName('label').length;
+            for (let optnLabelIndx = 0; optnLabelIndx < numOfOptionLabels; optnLabelIndx++) {
+                document.getElementsByTagName('label')[optnLabelIndx].style.margin = '5px';
+            }
+
+            var numOfQuestions = document.getElementsByTagName('h3').length;
+            for (let qustIndx = 0; qustIndx < numOfQuestions; qustIndx++) {
+                document.getElementsByTagName('h3')[qustIndx].innerHTML = `${qustIndx + 1}- ` + document.getElementsByTagName('h3')[qustIndx].innerHTML;
+            }
+        } else {
+            var numOfQuestions = document.getElementsByTagName('h3').length;
+            for (let qustIndx = 0; qustIndx < numOfQuestions; qustIndx++) {
+                document.getElementsByTagName('h3')[qustIndx].innerHTML = `${qustIndx + 1}- ` + document.getElementsByTagName('h3')[qustIndx].innerHTML;
+            }
+        }
+
+    }, 5000);
+}
+
+// handle submitted quiz options..
+quizContent.addEventListener('submit', (event) => {
+    let selectedOptions = [];
+    let outstr = $('#quiz-content').serializeArray();
+
+    outstr.forEach((value) => {
+        selectedOptions.push(value['value']);
+    });
+    // check answer of question number 6...
     
+    if (selectedOptions.length != document.getElementsByTagName('h3').length) {
+        console.log(selectedOptions);
+        frappe.msgprint(__('Please Check Your Selectd Answers!!'));
+    } else {
+        frappe.call({
+            method: "scholarships_management.www.culturequiz.Quiz.get_quiz_score",
+            args: {
+                selected_options: selectedOptions,
+                competition_title: competitionName,
+                passing_score: passingScore
+            },
+            callback: function (r) {
+                if (r.message) {
+                    var quizScore = r.message[0];
+                    var quizStatus = r.message[1];
+                    console.log(quizScore);
+                    console.log(quizStatus);
+                    window.location.replace('https://test.cdafricaa.com/culturequiz?new=1&quiz_score=' + btoa(quizScore) + '&quiz_status=' + btoa(quizStatus) + '&competition=' + competitionName + '&_lang=' + lang)
+                }
+            }
+        });
+    }
+    event.preventDefault();
+});
+
+
+/*
+const transquets = function () {
+    frappe.call({
+        method: "scholarships_management.www.culturequiz.Quiz.get_translated_question",
+        args: {
+            competition_title: competitionName,
+            system_lang: lang
+        },
+        callback: function (oqn) {
+            var horizontalLine = document.createElement("hr");
+            horizontalLine.style.width = '100%';
+            horizontalLine.style.margin = 'auto';
+            horizontalLine.style.borderTop = '1px solid';
+
+            Object.entries(oqn.message).forEach(function (val) {
+                //console.log(val[1]);
+                let questionHeader = document.createElement("h3");
+                questionHeader.innerHTML = val[1];
+                questionHeader.style.fontFamily = "al-mohannad";
+                questionHeader.style.fontWeight = "100px";
+
+                quizContent.appendChild(questionHeader);
+                quizContent.appendChild(document.createElement("br"));
+                quizContent.appendChild(horizontalLine);//br
+                quizContent.appendChild(document.createElement("br"));
+            });
+        }
+    });
+}
+transquets();
+*/
+
+/*
+const translateQuestion = function (qst) {
+    let translatedQuestion;
+
+    frappe.call({
+        method: "scholarships_management.www.culturequiz.Quiz.get_translated_question",
+        args: {
+            system_lang: 'pt', //lang
+            question_text: qst
+        },
+        callback: function (trqst) {
+            if (trqst.message) {
+                //console.log(trqst.message);
+                translatedQuestion = trqst.message;
+            } else {
+                //console.log(qst);
+                translatedQuestion = qst;
+            }
+        }
+    });
+
+    return translatedQuestion;
+}*/
+
+const testquest = function () {
+    let qlst = [];
+    let olst = [];
+
+    frappe.call({
+        method: "scholarships_management.www.culturequiz.Quiz.get_question_option",
+        args: {
+            competition_title: competitionName
+        },
+        callback: function (oqn) {
+            Object.entries(oqn.message).forEach(function (val) {
+                // remove 'ql editior mode..' from question tag..
+                let el = document.createElement('div');
+                el.innerHTML = val[0];
+                let questionText = el.getElementsByTagName('span')[0].innerHTML;
+
+                qlst.push(questionText); // push question text
+
+                olst.push(val[1]); // push array of options
+            });
+        }
+    });
+
+    return {
+        'quest': qlst,
+        'opts': olst
+    };
+}
+//testquest();
+
+const getTrans = function () {
+    var xlst = testquest()['quest'];
+    var xlstt = testquest()['opts'];
+
+    let tqlst = [];
+    let tolst = [];
+
+    // translated questions..
+    setTimeout(function () {
+        for (let idx = 0; idx < xlst.length; idx++) {
+            setTimeout(function () {
+                frappe.call({
+                    method: "scholarships_management.www.culturequiz.Quiz.get_translated_question",
+                    args: {
+                        system_lang: 'pt', //lang
+                        question_text: xlst[idx]
+                    },
+                    callback: function (trqst) {
+                        if (trqst.message) {
+                            //console.log("translated: " + trqst.message);
+                            tqlst.push(trqst.message);
+                        } else {
+                            //console.log("not translated: " + xlst[idx]);
+                            tqlst.push(xlst[idx]);
+                        }
+                    }
+                });
+            }, 2000);
+        }
+    }, 5000);
+
+    // translated options..
+    /*
+    setTimeout(function () {
+        for (let oidx = 0; oidx < xlstt.length; oidx++) {
+            console.log(xlstt[oidx]);
+        }
+    }, 5000);*/
+
+    setTimeout(function () {
+        console.log(tqlst);
+    }, 5000);
+    return tqlst;
+    /*return new Promise(resolve => {
+        resolve(tqlst);
+    });*/
+}
+//getTrans();
+
+//const gtrqst = async function () {
+const gtrqst = function () {
+    var ttqst = getTrans();
+
+    setTimeout(function () {
+        console.log('after await..');
+        console.log(ttqst[0]);
+        console.log(ttqst.length);
+    }, 5000);
+}
+//gtrqst();
+
+const qst = function () {
+    var xlst = testquest()['quest'];
+    var xlstt = testquest()['opts'];
+
+    setTimeout(function () {
+        for (let idx = 0; idx < xlst.length; idx++) {
+            console.log(xlst[idx]);
+            console.log('------------');
+            console.log(xlstt[idx]);
+        }
+    }, 5000);
+}
+//qst();
+
+
+/*
+const getQuest = function () {
     frappe.call({
         method: "scholarships_management.www.culturequiz.Quiz.get_question_option",
         args: {
@@ -99,45 +421,42 @@ function getQuest(question_option_lst) {
                             question_text: questionText
                         },
                         callback: function (rr) {
+                            var horizontalLine = document.createElement("hr");
+                            horizontalLine.style.width = '100%';
+                            horizontalLine.style.margin = 'auto';
+                            horizontalLine.style.borderTop = '1px solid';
+
                             if (rr.message) {
                                 questionHeader.innerHTML = rr.message;
                                 questionHeader.style.fontFamily = "al-mohannad";
                                 questionHeader.style.fontWeight = "100px";
-                                console.log(questionHeader);
-                                console.log(value[1]);
-                                //debugger;
-                                question_option_lst.push([questionHeader, value[1]])
+                                //pquestion_lst.push([questionHeader, value[1]]);
+                                quizContent.appendChild(questionHeader);
+                                setAnswers(value[1]);
+                                quizContent.appendChild(document.createElement("br"));
+                                quizContent.appendChild(horizontalLine);//br
+                                quizContent.appendChild(document.createElement("br"));
                             } else {
                                 questionHeader.innerHTML = value[0];
                                 questionHeader.style.fontFamily = "al-mohannad";
                                 questionHeader.style.fontWeight = "100px";
-                                console.log(questionHeader);
-                                console.log(value[1]);
-                                //debugger;
-                                question_option_lst.push([questionHeader, value[1]])
+                                //pquestion_lst.push([questionHeader, value[1]]);
+                                quizContent.appendChild(questionHeader);
+                                setAnswers(value[1]);
+                                quizContent.appendChild(document.createElement("br"));
+                                quizContent.appendChild(horizontalLine);//br
+                                quizContent.appendChild(document.createElement("br"));
                             }
                         }
                     });
                 });
             }
-
         }
     });
-    return question_option_lst;
 }
 
-debugger;
-var question_option_lst = [];
-console.log(getQuest(question_option_lst).length);
+//getQuest()
 
-/*
-for (let indxA = 0; indxA < question_option_lst.length; indxA++) {
-    quizContent.appendChild(question_option_lst[indxA][0]);
-    setAnswers(question_option_lst[indxA][1]);
-    quizContent.appendChild(document.createElement("br"));
-    quizContent.appendChild(horizontalLine);//br
-    quizContent.appendChild(document.createElement("br"));
-}*/
 
 function changeColor(event) {
     //debugger;
@@ -274,7 +593,7 @@ window.onload = () => {
     setTimeout(() => {
         if (lang == 'ar') {
             for (let spanIndx = 0; spanIndx < document.getElementsByTagName('span').length; spanIndx++) {
-                // spanIndx != 0 && 
+                // spanIndx != 0 &&
                 if (spanIndx != document.getElementsByTagName('span').length - 1) {
                     document.getElementsByClassName('ql-editor read-mode')[spanIndx].innerHTML = '<div style="float:right">' + (spanIndx + 1).toString() + ' - </div>' + document.getElementsByClassName('ql-editor read-mode')[spanIndx].innerHTML;
                 }
@@ -295,7 +614,7 @@ window.onload = () => {
         }
     }, 3000)
 }
-
+*/
 // quiz description..
 /*
 frappe.call({
