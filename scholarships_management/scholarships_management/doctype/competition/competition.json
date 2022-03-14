@@ -11,14 +11,17 @@
   "column_break_4",
   "competition_image",
   "quiz_banner",
+  "section_break_10",
+  "quiz_banners",
   "section_break_6",
   "competition_description",
   "quiz_description",
   "section_break_8",
   "start_date",
+  "is_active",
   "column_break_10",
   "end_date",
-  "is_active"
+  "random_questions"
  ],
  "fields": [
   {
@@ -67,10 +70,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "section_break_8",
    "fieldtype": "Section Break"
   },
@@ -97,12 +96,32 @@
    "fieldtype": "Text Editor",
    "label": "Quiz Description",
    "translatable": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "random_questions",
+   "fieldtype": "Check",
+   "label": "Random Questions"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "quiz_banners",
+   "fieldtype": "Table",
+   "label": "Quiz Banners",
+   "options": "Quiz Banners"
+  },
+  {
+   "fieldname": "section_break_10",
+   "fieldtype": "Section Break"
   }
  ],
  "image_field": "competition_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-02 12:47:47.093108",
+ "modified": "2022-03-13 15:52:46.324180",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "Competition",

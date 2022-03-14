@@ -52,7 +52,7 @@ if (document.getElementsByClassName("u-r")[0].innerHTML !== 'Administrator') {
                 langSwitcher.addEventListener('change', function () {
                     if (this.value !== '') {
                         lang = this.value;
-                        window.location.replace('https://test.cdafricaa.com/culturequiz/competitions' + '?_lang=' + lang);
+                        window.location.replace('https://cdafricaa.com/culturequiz/competitions' + '?_lang=' + lang);
                     }
                 });
             }
@@ -68,6 +68,7 @@ var ps = document.getElementsByClassName('p-s');
 var qb = document.getElementsByClassName('q-b');
 var nd_dt = document.getElementsByClassName('nd-dt');
 var i_a = document.getElementsByClassName('i-a');
+var r_q = document.getElementsByClassName('r-q');
 var ur = document.getElementsByClassName('u-r');
 var crnt_date = getDateOnly();
 
@@ -93,6 +94,7 @@ for (let indx = 0; indx < startQuizBtn.length; indx++) {
         var parmCT = ct[indx].innerHTML;
         var parmPS = ps[indx].innerHTML;
         var parmQP = btoa(qb[indx].innerHTML);
+        var parmRQ = r_q[indx].innerHTML;
         var parmUR = ur[indx].innerHTML;
 
         if (parmUR == 'Administrator') {
@@ -101,11 +103,11 @@ for (let indx = 0; indx < startQuizBtn.length; indx++) {
             return frappe.call({
                 method: 'logout',
                 callback: function (r) {
-                    window.location.replace('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
+                    window.location.replace('https://cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&rand_quest=' + parmRQ + '&_lang=' + lang);
                 }
             });
         } else { // guest case
-            window.location.replace('https://test.cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&_lang=' + lang);
+            window.location.replace('https://cdafricaa.com/culturequiz/Quiz?competition_name=' + parmCT + '&passing_score=' + parmPS + '&quiz_banner=' + parmQP + '&rand_quest=' + parmRQ + '&_lang=' + lang);
         }
     });
 }

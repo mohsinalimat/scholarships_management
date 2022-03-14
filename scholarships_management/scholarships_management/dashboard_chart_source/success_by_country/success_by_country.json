@@ -1,0 +1,13 @@
+{
+ "creation": "2022-03-13 20:59:04.281751",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2022-03-13 20:59:04.281751",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Success By Country",
+ "owner": "Administrator",
+ "source_name": "Success By Country",
+ "timeseries": 0
+}

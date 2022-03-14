@@ -1,5 +1,5 @@
 {% set competitions_data = frappe.get_list('Competition', fields=['competition_image', 'competition_title',
-'competition_description', 'passing_score', 'name', 'quiz_banner', 'end_date', 'is_active'], order_by='creation') %}
+'competition_description', 'passing_score', 'name', 'quiz_banner', 'end_date', 'is_active', 'random_questions'], order_by='creation') %}
 
 {% for competition in competitions_data %}
 <div class="container">
@@ -26,6 +26,9 @@
 
         {% set is_active = competition['is_active'] %}
         <p class="i-a" hidden>{{ is_active }}</p>
+
+        {% set random_questions = competition['random_questions'] %}
+        <p class="r-q" hidden>{{ random_questions }}</p>
 
         <div class="text-center" style="margin: 5px;">
 
