@@ -26,7 +26,9 @@
   "data_11",
   "language_2",
   "column_break_16",
-  "data_7"
+  "data_7",
+  "send_message",
+  "send_whatsapp_message"
  ],
  "fields": [
   {
@@ -46,7 +48,7 @@
    "fieldname": "data_3",
    "fieldtype": "Select",
    "label": "Educational Degree",
-   "options": "test1\ntest2\ntest3",
+   "options": "None\nPrimary\nPreparatory\nSecondary\nUniversity\nPostgraduate",
    "reqd": 1
   },
   {
@@ -72,7 +74,7 @@
   {
    "fieldname": "phone_number",
    "fieldtype": "Data",
-   "label": "Phone Number",
+   "label": "Phone Number(WhatsApp)",
    "reqd": 1
   },
   {
@@ -135,11 +137,22 @@
    "label": "School Name",
    "options": "School Registration",
    "reqd": 1
+  },
+  {
+   "fieldname": "send_message",
+   "fieldtype": "Button",
+   "label": "Send Email"
+  },
+  {
+   "fieldname": "send_whatsapp_message",
+   "fieldtype": "Button",
+   "hidden": 1,
+   "label": "Send WhatsApp Message"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-30 16:48:35.876227",
+ "modified": "2022-04-03 15:07:09.409886",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "School Teacher Registration",

@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2022-03-30 18:20:04.834652",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Accredited Schools",
+ "enabled": 0,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<html lang=\"en\">\n\n<head>\n  <style>\n    header.masterhead {\n      position: relative;\n      background-color: #343a40;\n      background: url(\"/files/webimg/bg.jpg\") no-repeat center center;\n      background-size: cover;\n      padding-top: 8rem;\n      padding-bottom: 10rem;\n    }\n\n    header.masterhead h2,\n    header.masterhead .h2 {\n      background-color: rgb(0, 0, 0);\n      /* Fallback color */\n      background-color: rgba(0, 0, 0, 0.4);\n      /* Black w/opacity/see-through */\n      color: white;\n      font-weight: bold;\n      border: 3px solid #f1f1f1;\n      position: absolute;\n      /*top: 50%;\n      left: 50%;*/\n      transform: translate(-50%, -50%);\n      z-index: 2;\n      /*width: 80%;*/\n      padding: 20px;\n      text-align: center;\n    }\n  </style>\n</head>\n\n<body>\n  <header class=\"masterhead\">\n    <div class=\"container position-relative\">\n      <div class=\"row justify-content-center\">\n        <div class='text-center'>\n          <h2 class=\"mb-5\">CDAFRICIA</h2> \n          <h2 class=\"mb-5\">\u0644\u062c\u0646\u0629 \u0627\u0644\u062f\u0639\u0648\u0629 \u0641\u064a \u0623\u0641\u0631\u064a\u0642\u064a\u0627</h2>\n        </div>\n      </div>\n    </div>\n  </header>\n\n  <section>\n    <div class=\"container p-0\">\n      <div class=\"row g-0\">\n        <div class=\"justify-content-center\">\n          <h4>Dear <u>{{ doc.full_name_en }}</u>, Your Scholarship Request submitted successfully!!</h4>\n          <h5>Accredited School Code Is: {{ doc.name }} </h5>\n        </div>\n      </div>\n    </div>\n  </section>\n</body>\n\n</html>",
+ "modified": "2022-03-31 12:03:27.896588",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "New Accredited School",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "cc": "{{ doc.school_manager_email }}\n{{ doc.vice_manager_email }}",
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "CDAFRICIA Notifications",
+ "sender_email": "muhammadnassef34@gmail.com",
+ "subject": "{{ doc.school_name }} Accredited Successfully"
+}

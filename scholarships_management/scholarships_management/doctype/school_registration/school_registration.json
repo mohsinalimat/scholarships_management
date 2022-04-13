@@ -9,6 +9,7 @@
  "field_order": [
   "school_data_section",
   "school_name",
+  "school_email",
   "school_language1",
   "school_language2",
   "column_break_4",
@@ -288,7 +289,13 @@
    "fieldname": "school_city",
    "fieldtype": "Link",
    "label": "School City",
-   "options": "City"
+   "options": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "school_email",
+   "fieldtype": "Data",
+   "label": "School Email"
   }
  ],
  "has_web_view": 1,
@@ -296,7 +303,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-02-10 18:37:01.793360",
+ "modified": "2022-03-29 13:54:49.720471",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "School Registration",

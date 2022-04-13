@@ -1,57 +1,95 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:school_name",
- "creation": "2022-01-31 13:39:21.336528",
+ "autoname": "naming_series:",
+ "creation": "2022-03-27 16:36:40.680467",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "school_name",
-  "section_break_2",
-  "school_country",
-  "column_break_4",
-  "school_city",
-  "section_break_6",
-  "registered_by",
-  "section_break_8",
-  "school_data",
-  "column_break_9",
-  "approve__registration",
-  "school_data_url",
+  "column_break_3",
   "school_email",
+  "section_break_3",
+  "school_country",
+  "column_break_5",
+  "school_city",
+  "section_break_7",
+  "accredited_by",
+  "section_break_9",
+  "show_school_data",
+  "column_break_9",
+  "send_message",
+  "school_data_url",
   "school_manager_email",
   "vice_manager_email"
  ],
  "fields": [
   {
+   "default": "ASC-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "ASC-.YYYY.-",
+   "reqd": 1
+  },
+  {
    "fieldname": "school_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "School Name",
-   "unique": 1
+   "read_only": 1
   },
   {
    "fieldname": "school_country",
    "fieldtype": "Data",
-   "label": "School Country"
+   "label": "School Country",
+   "read_only": 1
   },
   {
-   "fieldname": "registered_by",
+   "fieldname": "school_city",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "label": "Registered By"
+   "label": "School City",
+   "read_only": 1
   },
   {
-   "fieldname": "school_data",
+   "fieldname": "show_school_data",
    "fieldtype": "Button",
    "label": "Show School Data"
   },
   {
-   "fieldname": "approve__registration",
+   "fieldname": "send_message",
    "fieldtype": "Button",
-   "in_preview": 1,
-   "label": "Approve  Registration"
+   "label": "Send Email"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accredited_by",
+   "fieldtype": "Data",
+   "label": "Accredited By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "school_data_url",
@@ -61,34 +99,12 @@
    "read_only": 1
   },
   {
-   "fieldname": "school_city",
-   "fieldtype": "Data",
-   "label": "School City"
-  },
-  {
-   "fieldname": "section_break_2",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_4",
+   "fieldname": "column_break_3",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_9",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_8",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "school_email",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "School Email",
    "read_only": 1
   },
@@ -109,10 +125,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-30 17:24:03.072599",
+ "modified": "2022-04-03 12:02:33.110846",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
- "name": "Non_accredited Schools",
+ "name": "Accredited Schools",
  "owner": "Administrator",
  "permissions": [
   {
@@ -129,5 +145,7 @@
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
 }

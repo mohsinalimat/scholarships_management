@@ -10,7 +10,7 @@
  "amount_based_on_field": 0,
  "apply_document_permissions": 0,
  "button_label": "Save",
- "client_script": "function ValidateEmail(inEmail){\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\n    try {\n    if(inEmail.match(mailformat))\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err) {\n        return false;\n    }\n}\n\nfunction ValidatePhoneNumber(inNumber){\n    var countryCodeFormat = /^\\+?\\d+$/;\n    try{\n    if(inNumber.match(countryCodeFormat)[0])\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err){\n        return false;\n    }\n}\n\nfrappe.web_form.validate = () => {\n    if (ValidateEmail(frappe.web_form.get_value('email_address')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('phone_number'))){\n        return true ;\n    } else {\n        return false ;\n    }\n}\n\nfrappe.web_form.after_save= () => {\n   window.location = frappe.web_form.success_url\n}\n\n",
+ "client_script": "var urlParams = new URLSearchParams(window.location.search);\n\nvar schoolName = urlParams.get('school_name');\n\nfrappe.web_form.set_value('school_name', schoolName);\n\nfunction ValidateEmail(inEmail){\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\n    try {\n    if(inEmail.match(mailformat))\n        {\n            return true;\n        }\n    else\n        {\n            frappe.msgprint(__('Check your Email!'));\n        }\n    } catch (err) {\n        frappe.msgprint(__('Check your Email!'));\n    }\n}\n\nfunction ValidatePhoneNumber(inNumber){\n    var countryCodeFormat = /^\\+?\\d+$/;\n    try{\n    if(inNumber.match(countryCodeFormat)[0])\n        {\n            return true;\n        }\n    else\n        {\n            frappe.msgprint(__('Check your Phone Number!'));\n        }\n    } catch (err){\n        frappe.msgprint(__('Check your Phone Number!'));\n    }\n}\n\nfrappe.web_form.validate = () => {\n    if (ValidateEmail(frappe.web_form.get_value('email_address')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('phone_number'))){\n        return true ;\n    } else {\n        return false ;\n    }\n}\n\n// adding new teacher with the same scholl name..\nvar addNewTeacherBtnFlag = false;\nconst addNewTeacher = function (){\n    addNewTeacherBtnFlag = true;\n    frappe.web_form.save();\n}\n// custom button for adding new teacher..\naddNewTeacherBtn = document.createElement('button');\naddNewTeacherBtn.id = 'addNewTeacherBtnID';\naddNewTeacherBtn.className = 'btn btn-info btn-sm ml-2';\naddNewTeacherBtn.innerHTML = 'Add New Teacher';\naddNewTeacherBtn.style.margin = '2px';\ndocument.getElementsByClassName('web-form-footer pull-right')[0].appendChild(addNewTeacherBtn);\naddNewTeacherBtn.addEventListener('click', addNewTeacher);\n\n\n// handle save buttons..\n//document.getElementsByClassName('btn btn-primary btn-sm ml-2')[0].addEventListener('click', saveAndGoHome);\n//document.getElementsByClassName('btn btn-primary btn-sm ml-2')[1].addEventListener('click', saveAndGoHome);\n\n/*frappe.web_form.save = ()=> {\n    console.log('test cutom save');\n}*/\n\nfrappe.web_form.after_save = ()=> {\n    if (addNewTeacherBtnFlag) {\n        addNewTeacherBtnFlag = false;\n        window.location = `https://cdafricaa.com/school-teacher-registration?new=1&school_name=${schoolName}`;\n    } else {\n        window.location = frappe.web_form.success_url;\n    }\n}\n\n\n",
  "creation": "2022-01-30 11:59:02.948827",
  "currency": "SAR",
  "doc_type": "School Teacher Registration",
@@ -20,7 +20,7 @@
  "is_standard": 1,
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2022-01-30 16:53:58.844309",
+ "modified": "2022-03-24 15:53:32.605043",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "school-teacher-registration",
@@ -33,7 +33,7 @@
  "show_in_grid": 0,
  "show_sidebar": 0,
  "sidebar_items": [],
- "success_url": "/school-teacher-registration?new=1",
+ "success_url": "/home/index",
  "title": "School Teacher Registration",
  "web_form_fields": [
   {
@@ -62,7 +62,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "description": "Make sure to include country code e.g.(+20)",
+   "description": "Make sure to include country code",
    "fieldname": "phone_number",
    "fieldtype": "Data",
    "hidden": 0,
@@ -165,7 +165,7 @@
    "label": "Educational Degree",
    "max_length": 0,
    "max_value": 0,
-   "options": "test1\ntest2\ntest3",
+   "options": "None\nPrimary\nPreparatory\nSecondary\nUniversity\nPostgraduate",
    "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0

@@ -10,7 +10,7 @@
  "amount_based_on_field": 0,
  "apply_document_permissions": 0,
  "button_label": "Save",
- "client_script": "function ValidateEmail(inEmail){\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\n    try {\n    if(inEmail.match(mailformat))\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err) {\n        return false;\n    }\n}\n\nfunction ValidatePhoneNumber(inNumber){\n    var countryCodeFormat = /^\\+?\\d+$/;\n    try{\n    if(inNumber.match(countryCodeFormat)[0])\n        {\n            return true;\n        }\n    else\n        {\n            return false;\n        }\n    } catch (err){\n        return false;\n    }\n}\n\nfrappe.web_form.validate = () => {\n    if (ValidateEmail(frappe.web_form.get_value('manager_email')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('manager_phone')) &&\n        ValidateEmail(frappe.web_form.get_value('vice_email')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('vice_phone'))){\n        return true ;\n    } else {\n        return false ;\n    }\n}\n\nfrappe.web_form.after_save= () => {\n   window.location = frappe.web_form.success_url\n}\n\n",
+ "client_script": "function ValidateEmail(inEmail){\n    var mailformat = /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;\n    try {\n    if(inEmail.match(mailformat))\n        {\n            return true;\n        }\n    else\n        {\n            frappe.msgprint(__('Check your Email!'));\n        }\n    } catch (err) {\n        frappe.msgprint(__('Check your Email!'));\n    }\n}\n\nfunction ValidatePhoneNumber(inNumber){\n    var countryCodeFormat = /^\\+?\\d+$/;\n    try{\n    if(inNumber.match(countryCodeFormat)[0])\n        {\n            return true;\n        }\n    else\n        {\n            frappe.msgprint(__('Check your Phone Number!'));\n        }\n    } catch (err){\n        frappe.msgprint(__('Check your Phone Number!'));\n    }\n}\n\nfrappe.web_form.validate = () => {\n    if (ValidateEmail(frappe.web_form.get_value('manager_email')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('manager_phone')) &&\n        ValidateEmail(frappe.web_form.get_value('vice_email')) &&\n        ValidatePhoneNumber(frappe.web_form.get_value('vice_phone'))){\n        return true ;\n    } else {\n        return false ;\n    }\n}\n\nfrappe.web_form.after_save= () => {\n    schoolName = frappe.web_form.get_value(['school_name']);\n    window.location = `https://cdafricaa.com/school-teacher-registration?new=1&school_name=${schoolName}`;\n}\n\n",
  "creation": "2022-01-26 18:01:03.774009",
  "currency": "SAR",
  "doc_type": "School Registration",
@@ -21,7 +21,7 @@
  "is_standard": 1,
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2022-02-10 18:21:45.861910",
+ "modified": "2022-03-29 16:37:23.838664",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "testschool",
@@ -74,6 +74,19 @@
   },
   {
    "allow_read_on_all_link_options": 0,
+   "description": "Make sure to write the correct school email address",
+   "fieldname": "school_email",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "School Email",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
    "fieldname": "",
    "fieldtype": "Section Break",
    "hidden": 0,
@@ -93,7 +106,7 @@
    "max_value": 0,
    "options": "Language",
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   },
   {
@@ -143,7 +156,7 @@
    "max_value": 0,
    "options": "City",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -466,7 +479,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "description": "Make sure to include country code e.g.(+20)",
+   "description": "Make sure to include country code",
    "fieldname": "manager_phone",
    "fieldtype": "Data",
    "hidden": 0,
@@ -538,7 +551,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "description": "Make sure to include country code e.g.(+20)",
+   "description": "Make sure to include country code",
    "fieldname": "vice_phone",
    "fieldtype": "Data",
    "hidden": 0,
