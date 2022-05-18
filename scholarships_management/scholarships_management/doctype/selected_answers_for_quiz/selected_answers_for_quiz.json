@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-05-17 18:10:37.967344",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "client_ip_address",
+  "competition_title",
+  "selected_answers"
+ ],
+ "fields": [
+  {
+   "fieldname": "client_ip_address",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Client IP Address"
+  },
+  {
+   "fieldname": "competition_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Competition Name"
+  },
+  {
+   "fieldname": "selected_answers",
+   "fieldtype": "Long Text",
+   "label": "Selected Answers"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-05-18 10:39:42.079287",
+ "modified_by": "Administrator",
+ "module": "Scholarships Management",
+ "name": "Selected Answers For Quiz",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

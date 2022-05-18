@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import random
 
 
+
 @frappe.whitelist(allow_guest=True)
 def get_quiz_banner(competition_name, system_lang='en'):
     quiz_banner_img = frappe.db.get_value('Quiz Banners', {'quiz_banner_language': system_lang, 'parent': competition_name}, 'quiz_banner_image')
@@ -140,35 +141,48 @@ def get_source_text_for_option(selected_option_lst):
             source_text_options.append(optn)
     return source_text_options
 
+"""def get_client_ip_address():
+    hostname = socket.gethostname()
+    client_ip_address = socket.gethostbyname(hostname)
+    return client_ip_address"""
+
+def save_selected_answers(competition_title, selected_option_lst, client_ip_address):
+    #client_ip_address = get_client_ip_address()
+    doc = frappe.get_doc(doctype='Selected Answers For Quiz',client_ip_address=client_ip_address,
+    competition_title=competition_title, selected_answers=','.join(selected_option_lst))
+    doc.insert(ignore_permissions=True)
 
 @frappe.whitelist(allow_guest=True)
-def get_quiz_score(selected_options, competition_title, passing_score):
+def get_quiz_score(selected_options, competition_title, passing_score, is_random_questions, client_ip_address):
     if isinstance(selected_options, six.string_types):
         selected_option_lst = json.loads(selected_options)
 
     # get source text of translted option..
     selected_option_lst = get_source_text_for_option(selected_option_lst)
+    save_selected_answers(competition_title, selected_option_lst, client_ip_address)
+    
     quiz_score = calculate_score(
-        selected_option_lst, competition_title, passing_score)[0]
+        selected_option_lst, competition_title, passing_score, is_random_questions)[0]
 
     quiz_status = calculate_score(
-        selected_option_lst, competition_title, passing_score)[1]
+        selected_option_lst, competition_title, passing_score, is_random_questions)[1]
     # make Contestant data form available
     #frappe.db.sql("""update `tabWeb Form` set published = 1 where name='culturequiz'""")
     return [quiz_score, quiz_status]
 
 
-def calculate_score(selected_option_lst, competition_title, passing_score):
+def calculate_score(selected_option_lst, competition_title, passing_score, is_random_questions):
     correct_options = get_correct_options(competition_title)
 
     count = 0
-    for indx in range(len(selected_option_lst)):
-        if selected_option_lst[indx] == correct_options[indx]:
-            count += 1
-
-    """for itm in selected_option_lst:
-        if itm in correct_options:
-            count += 1"""
+    if is_random_questions == '1':
+        for itm in selected_option_lst:
+            if itm in correct_options:
+                count += 1
+    else:
+        for indx in range(len(selected_option_lst)):
+            if selected_option_lst[indx] == correct_options[indx]:
+                count += 1
 
     total_score = float((count / len(correct_options)) * 100)
 

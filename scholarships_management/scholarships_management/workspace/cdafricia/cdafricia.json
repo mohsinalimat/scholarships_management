@@ -22,7 +22,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Scholarship",
+   "label": "Scholarship Management",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -40,7 +40,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "University",
+   "label": "Universities",
    "link_to": "Universities",
    "link_type": "DocType",
    "onboard": 0,
@@ -50,7 +50,7 @@
    "hidden": 0,
    "icon": "",
    "is_query_report": 0,
-   "label": "School",
+   "label": "Schools Management",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -59,7 +59,7 @@
    "hidden": 0,
    "icon": "code-of-conduct",
    "is_query_report": 0,
-   "label": "\u0627\u0644\u0645\u062f\u0627\u0631\u0633 \u0627\u0644\u0645\u0633\u062c\u0644\u0629",
+   "label": "Registered schools",
    "link_to": "School Registration",
    "link_type": "DocType",
    "onboard": 0,
@@ -69,7 +69,7 @@
    "hidden": 0,
    "icon": "fa fa-teacher",
    "is_query_report": 0,
-   "label": "\u0645\u0639\u0644\u0645\u064a \u0627\u0644\u0645\u062f\u0627\u0631\u0633",
+   "label": "School Teachers",
    "link_to": "School Teacher Registration",
    "link_type": "DocType",
    "onboard": 0,
@@ -78,7 +78,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "\u0627\u0644\u0645\u062f\u0627\u0631\u0633 \u0627\u0644\u0645\u0633\u062c\u0644\u0629 \u0642\u0628\u0644 \u0627\u0644\u0627\u0639\u062a\u0645\u0627\u062f",
+   "label": "Non_accredited Schools",
    "link_to": "Non_accredited Schools",
    "link_type": "DocType",
    "onboard": 0,
@@ -87,7 +87,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "\u0627\u0644\u0645\u062f\u0627\u0631\u0633 \u0627\u0644\u0645\u0639\u062a\u0645\u062f\u0629",
+   "label": "Accredited Schools",
    "link_to": "Accredited Schools",
    "link_type": "DocType",
    "onboard": 0,
@@ -96,7 +96,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Quiz",
+   "label": "Quizzes Management",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -104,7 +104,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Competition",
+   "label": "Competitions",
    "link_to": "Competition",
    "link_type": "DocType",
    "onboard": 0,
@@ -131,7 +131,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Quiz Question",
+   "label": "Quizzes Questions",
    "link_to": "Question",
    "link_type": "DocType",
    "onboard": 0,
@@ -149,7 +149,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "\u062a\u0631\u062c\u0645\u0629",
+   "label": "Translation List",
    "link_to": "Translation",
    "link_type": "DocType",
    "onboard": 0,
@@ -165,7 +165,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-03-27 18:27:54.746165",
+ "modified": "2022-05-11 14:18:59.330906",
  "modified_by": "Administrator",
  "module": "Scholarships Management",
  "name": "CDAFRICIA",

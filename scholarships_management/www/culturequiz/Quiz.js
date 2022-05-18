@@ -3,6 +3,11 @@ var urlParams = new URLSearchParams(window.location.search);
 var competitionName = urlParams.get('competition_name');
 var passingScore = urlParams.get('passing_score');
 var RandQuest = urlParams.get('rand_quest');
+var clientIpAddress = ''
+$.getJSON('https://api.db-ip.com/v2/free/self', function (data) {
+    var userSessionData = data;
+    clientIpAddress = (userSessionData.ipAddress).toString();
+});
 // set quiz banner image..
 //var quizBanner = urlParams.get('quiz_banner');
 //document.getElementById('qz-b').src = atob(quizBanner);
@@ -255,7 +260,9 @@ quizContent.addEventListener('submit', (event) => {
             args: {
                 selected_options: selectedOptions,
                 competition_title: competitionName,
-                passing_score: passingScore
+                passing_score: passingScore,
+                is_random_questions: RandQuest,
+                client_ip_address: clientIpAddress
             },
             callback: function (r) {
                 if (r.message) {
